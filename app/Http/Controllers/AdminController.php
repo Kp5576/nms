@@ -324,16 +324,29 @@ class AdminController extends Controller {
 
     public function update_branch(Request $request)
     {
-        $data = $request->validate([
-            'name' => 'required',
-            'email' => 'required',
-            'mobile' => 'required',
+        $agent_list = $request->validate([
+            'branch_name' => 'required',
+            'address' => 'required',
             'ip' => 'required',
-            'company_name' => 'required',
-             'operator_name' => 'required'
+            'port' => '',
+             'operator_name' => '',
+             'isp_name' => '',
+             'agent_name' => '',
+             'branch_code' => ''
+
         ]);
 
-        DB::table('branch_master')->where('id', $request->record_id)->update($data);
+        // if($code = DB::table('branch_master')->orderBy('id', 'DESC')->first()->id){
+        //     $code;
+        // }
+        // else{
+        //     $code = 1;
+        // }
+        $code1 = rand(0,100);
+        $code2 = rand(0,10);
+        $code = $code1 + $code2;
+        $agent_list['branch_code'] = $code+1;
+        DB::table('branch_master')->where('id', $request->record_id)->update($agent_list);
          Alert::success('Success', 'Record updated!');
         return redirect('/admin/branch');
     }

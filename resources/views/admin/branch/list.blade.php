@@ -30,14 +30,14 @@
                             <button type="button" class="btn btn-success">
                                 <a href="{{route('admin.branch.add')}}" class="btn btn-success">
                                     Add Branch Master
-                                </a>  
+                                </a>
                             </button>
                             <div class="table-responsive mt-2">
                                 <table class="table table-bordered table-vcenter text-nowrap" id="basic-datatable2">
                                     <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th>Barnch Code kp</th>
+                                            <th>Barnch Code</th>
                                             <th>Branch Name</th>
                                             <th>Address</th>
                                             <th>IP</th>
@@ -46,7 +46,7 @@
                                             <th>ISP Name</th>
                                             <th>Agent Name</th>
                                             <th>Action</th>
-                                            
+
 
                                         </tr>
                                     </thead>

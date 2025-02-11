@@ -57,7 +57,7 @@ class AdminController extends Controller {
         'max_latency'=>$max_latency
         ]);
     }
-    
+
     public function list_isp() {
         $list = ISP::where('operator', 0)->paginate(10);
 
@@ -103,7 +103,7 @@ class AdminController extends Controller {
     // ----------------------------------isp Member List----------------------------------------
 
     public function isp_member_list(Request $request , $id) {
-      
+
         $member_list = ISPMember::where('isp_id',$id)->paginate(10);
         return view('admin.isp.member_list',['member_list'=>$member_list,'isp_id' =>$id]);
     }
@@ -127,7 +127,7 @@ class AdminController extends Controller {
         Alert::success('Success', 'Record inserted!');
         return redirect()->back();
     }
-    
+
     public function isp_member_update(Request $request)
     {
         $data = $request->validate([
@@ -153,7 +153,7 @@ class AdminController extends Controller {
         ISPMember::where('id',$id)->delete();
         Alert::success('Success', 'Record deleted!');
         return redirect()->back();
-        
+
     }
 
     //start operator
@@ -172,7 +172,7 @@ class AdminController extends Controller {
             'operator' => 'required'
         ]);
 
-        
+
         //dd($request->all());
 
 
@@ -204,12 +204,12 @@ class AdminController extends Controller {
         return redirect('/admin/isp');
     }
 
-   
+
 
     // ----------------------------------operator Member List----------------------------------------
 
     public function operator_member_list(Request $request , $id) {
-      
+
         $member_list = ISPMember::where('isp_id',$id)->paginate(10);
         return view('admin.isp.member_list',['member_list'=>$member_list,'isp_id' =>$id]);
     }
@@ -233,7 +233,7 @@ class AdminController extends Controller {
         Alert::success('Success', 'Record inserted!');
         return redirect()->back();
     }
-    
+
     public function operator_member_update(Request $request)
     {
         $data = $request->validate([
@@ -259,29 +259,67 @@ class AdminController extends Controller {
         ISPMember::where('id',$id)->delete();
         Alert::success('Success', 'Record deleted!');
         return redirect()->back();
-        
+
     }
 
      // ----------------------------------branch Starting----------------------------------------
      public function list_branch(Request $request) {
-      
+
         $agent_list = DB::table('branch_master')->paginate(10);
-        return view('admin.branch.list',['agent_list'=>$agent_list]);
+        $isp      = ISP::get();
+        $customer = Customer::get();
+        $agent = Agent::get();
+        return view('admin.branch.list',['agent_list'=>$agent_list, 'isp'=>$isp, 'customer'=>$customer, 'agent'=>$agent]);
+    }
+
+    public function branch_add(){
+        //$data     = NMS::get();
+        //$member = User::whereIn('role_id',[2])->get();
+        $isp      = ISP::get();
+        $customer = ISP::where('operator',1)->get();
+        $agent = Agent::get();
+
+        return view('admin.branch.add',[ 'isp'=>$isp, 'customer'=>$customer, 'agent'=>$agent]);
     }
 
     public function create_branch(Request $request){
         $agent_list = $request->validate([
-            'name' => 'required',
-            'email' => 'required',
-            'mobile' => 'required',
+            'branch_name' => 'required',
+            'address' => 'required',
             'ip' => 'required',
-            'company_name' => 'required',
-             'operator_name' => 'required'
+            'port' => '',
+             'operator_name' => '',
+             'isp_name' => '',
+             'agent_name' => '',
+             'branch_code' => ''
+             
         ]);
-
+        
+        // if($code = DB::table('branch_master')->orderBy('id', 'DESC')->first()->id){
+        //     $code;
+        // }
+        // else{
+        //     $code = 1;
+        // }
+        $code1 = rand(0,100);
+        $code2 = rand(0,10);
+        $code = $code1 + $code2;
+        $agent_list['branch_code'] = $code+1;
         $result = DB::table('branch_master')->insert($agent_list);
+        
         Alert::success('Success', 'Record inserted!');
+        
         return redirect('/admin/branch');
+    }
+
+    public function edit_branch($id){
+        
+        $isp      = ISP::get();
+        $customer = Customer::get();
+        $agent = Agent::get();
+
+        $nms = DB::table('branch_master')->where('id', $id)->first();
+        return view('admin.branch.edit',[ 'isp'=>$isp, 'customer'=>$customer, 'agent'=>$agent, 'nms' => $nms]);
     }
 
     public function update_branch(Request $request)
@@ -307,20 +345,16 @@ class AdminController extends Controller {
         Alert::success('Success', 'Record deleted!');
         return redirect('/admin/branch');
     }
-    
-    public function branch_member_list(Request $request , $id) {
-      
-        $member_list = AgentMember::where('agent_id',$id)->paginate(10);
-        return view('admin.branch.member_list',['member_list'=>$member_list,'agent_id' =>$id]);
-    }
+
+   
 
 
 // ------------------------------Agent Starting-------------------------------------
     public function list_agent() {
         $agent_list = Agent::paginate(10);
         return view('admin.agent.list',['agent_list'=>$agent_list]);
-    } 
-     
+    }
+
 
     public function create_agent(Request $request){
         $agent_list = $request->validate([
@@ -357,7 +391,7 @@ class AdminController extends Controller {
     }
 
     public function agent_member_list(Request $request , $id) {
-      
+
         $member_list = AgentMember::where('agent_id',$id)->paginate(10);
         return view('admin.agent.member_list',['member_list'=>$member_list,'agent_id' =>$id]);
     }
@@ -407,7 +441,7 @@ class AdminController extends Controller {
         AgentMember::where('id',$id)->delete();
         Alert::success('Success', 'Record deleted!');
         return redirect()->back();
-        
+
     }
 
 // -------------------------------Customer Starting----------------------------
@@ -449,7 +483,7 @@ class AdminController extends Controller {
     public function delete_customer(Request $request, $id)
     {
         Customer::where('id',$id)->delete();
-        
+
         Alert::success('Success', 'Record deleted!');
         return redirect('/admin/customer');
     }
@@ -457,9 +491,9 @@ class AdminController extends Controller {
     public function customer_member_list(Request $request, $id){
         $member_list = CustomerMember::where('customer_id',$id)->paginate(10);
         return view('admin.customer.member_list',['member_list'=>$member_list,'customer_id'=>$id]);
-    }   
-    
-    
+    }
+
+
     public function customer_member_create(Request $request){
         $data = $request->validate([
             'name'=>'required',
@@ -467,7 +501,7 @@ class AdminController extends Controller {
             'mobile'=>'required',
             'customer_id'=>'',
         ]);
-        
+
         if($request->alert){
             $data['alert'] = 1;
         }else{
@@ -482,7 +516,7 @@ class AdminController extends Controller {
             'name'=> 'required',
             'email'=> 'required',
             'mobile'=> 'required',
-            
+
         ]);
         if($request->alert){
         $data['alert'] = 1;
@@ -500,13 +534,13 @@ public function customer_member_delete(Request $request, $id)
     CustomerMember::where('id',$id)->delete();
     Alert::success('Success', 'Record deleted!');
     return redirect()->back();
-    
+
 }
 
     // -------------------------------- member list-------------------------
     public function member_list(){
         $list_member = User::where('role_id',2)->paginate(10);
-        return view('admin.member.list',['list_member'=>$list_member]); 
+        return view('admin.member.list',['list_member'=>$list_member]);
     }
 
     public function member_create(Request $request){
@@ -537,14 +571,14 @@ public function customer_member_delete(Request $request, $id)
         Alert::success('Success', 'Record inserted!');
         return redirect()->back();
     }
-    
+
     public function edit_member($id){
         $data     = User::get();
         $member = User::whereIn('role_id',[2])->get();
         if(!empty($request->password)){
             $data['password'] = Hash::make($request->password);
         }
-        
+
         $user =  User::where('id', $id)->first();
         return view('admin.member.edit',['data'=>$data, 'member'=>$member, 'user' => $user]);
     }
@@ -583,7 +617,7 @@ public function customer_member_delete(Request $request, $id)
     public function member_delete(Request $request, $id)
     {
         User::where('id',$id)->delete();
-        
+
         Alert::success('Success', 'Record deleted!');
         return redirect()->back();
 
@@ -591,9 +625,9 @@ public function customer_member_delete(Request $request, $id)
 
 // ----------------------------starting-of--NMS--------------------------
     public function list_nms(){
-        $nms_list = NMS::with(['user', 'customer']) 
-        ->leftJoin('customer', 'nms.customer_id', '=', 'customer.id') 
-        ->select('nms.*', 'customer.branch_name') 
+        $nms_list = NMS::with(['user', 'customer'])
+        ->leftJoin('customer', 'nms.customer_id', '=', 'customer.id')
+        ->select('nms.*', 'customer.branch_name')
         ->paginate(10);
         // echo "<pre>";
         // print($nms_list);die;
@@ -610,31 +644,46 @@ public function customer_member_delete(Request $request, $id)
 
         return view('admin.nms.add',['data'=>$data, 'member'=>$member, 'isp'=>$isp, 'customer'=>$customer, 'agent'=>$agent]);
     }
-    
+
     public function ajaxUser_isp($id){
         $member_names = ISPMember::where('isp_id',$id)->get()->toArray();
         // $member_ids = ISPMember::where('isp_id',$id)->pluck('id')->toArray();
         //   $member_names = implode(',',$member_names);
         //   $member_ids = implode(',',$member_ids);
 //,"isp_ids"=>$member_ids
-          echo json_encode(array("isp_names"=>$member_names));
+        $isp_name = ISP::where('id',$id)->first()->name;
+        
+          echo json_encode(array("isp_names"=>$member_names , "isp_name"=>$isp_name ));
 
     }
     public function ajaxUser_agent($id){
         $agent_member_names = AgentMember::where('agent_id',$id)->pluck('name')->toArray();
         $agent_member_ids = AgentMember::where('agent_id',$id)->pluck('id')->toArray();
           $agent_member_names = implode(',',$agent_member_names);
-          $agent_member_ids = implode(',',$agent_member_ids);  
+          $agent_member_ids = implode(',',$agent_member_ids);
+          $agent_name = Agent::where('id',$id)->first()->name;
 
-          echo json_encode(array("agent_names"=>$agent_member_names,"agent_ids"=>$agent_member_ids));
+          echo json_encode(array("agent_names"=>$agent_member_names,"agent_ids"=>$agent_member_ids , "agent_name"=>$agent_name));
     }
     public function ajaxUser_customer($id){
         $customer_member_names = CustomerMember::where('customer_id',$id)->pluck('name')->toArray();
         $customer_member_ids = CustomerMember::where('customer_id',$id)->pluck('id')->toArray();
           $customer_member_names = implode(',',$customer_member_names);
-          $customer_member_ids = implode(',',$customer_member_ids);  
+          $customer_member_ids = implode(',',$customer_member_ids);
+          $customer_name = Customer::where('id',$id)->first()->name;
 
-          echo json_encode(array("customer_names"=>$customer_member_names,"customer_ids"=>$customer_member_ids));
+          echo json_encode(array("customer_names"=>$customer_member_names,"customer_ids"=>$customer_member_ids,"customer_name"=>$customer_name));
+    }
+
+    public function ajaxUser_operator($id){
+        $member_names = ISPMember::where('isp_id',$id)->pluck('name')->toArray();
+        // $member_ids = ISPMember::where('isp_id',$id)->pluck('id')->toArray();
+        //   $member_names = implode(',',$member_names);
+        //   $member_ids = implode(',',$member_ids);
+//,"isp_ids"=>$member_ids
+        $isp_name = ISP::where('id',$id)->first()->name;
+        
+          echo json_encode(array("operator_member_names"=>$member_names , "operator_name"=>$isp_name ));
     }
 
     public function nms_create(Request $request){
@@ -652,7 +701,7 @@ public function customer_member_delete(Request $request, $id)
             'ip_address' => 'required',
             'port'        => '',
             'unique_id' => Str::random(8),
-           
+
         ]);
 
         if($request->hindi_english){
@@ -711,7 +760,7 @@ public function customer_member_delete(Request $request, $id)
         $isp      = ISP::get();
         $customer = Customer::get();
         $agent = Agent::get();
-        
+
         $nms =  NMS::where('id', $id)->first();
         return view('admin.nms.edit',['data'=>$data, 'member'=>$member, 'isp'=>$isp, 'customer'=>$customer, 'agent'=>$agent, 'nms' => $nms]);
     }
@@ -769,7 +818,7 @@ public function customer_member_delete(Request $request, $id)
         if(!empty($request->isp_members_ids)){
             $data["isp_members_ids"] = implode(",", $request->isp_members_ids);
         }
-     
+
         $result = NMS::where('id', $request->record_id)->update($data);
         Alert::success('Success', 'Record updated!');
         return redirect('admin/nms');
@@ -781,17 +830,17 @@ public function customer_member_delete(Request $request, $id)
             $isp      = ISP::get();
             $customer = Customer::get();
             $agent = Agent::get();
-    
+
             $nms =  NMS::where('id', $id)->first();
-            return view('admin.nms.view',['data'=>$data, 'member'=>$member, 'isp'=>$isp, 'customer'=>$customer, 
+            return view('admin.nms.view',['data'=>$data, 'member'=>$member, 'isp'=>$isp, 'customer'=>$customer,
             'agent'=>$agent, 'nms' => $nms]);
         }
-    
-        
+
+
         public function nms_logs(Request $request, $id){
             $end_date = date("Y-m-d H:i:s");
             $start_date = date("Y-m-d H:i:s", strtotime('-12 hours'));
-           
+
             $data['start_date'] ='';
             $data['end_date'] ='';
             if(isset($request->start_date) && isset($request->end_date) && !empty($request->start_date) && !empty($request->end_date)){
@@ -803,14 +852,14 @@ public function customer_member_delete(Request $request, $id)
             $nms = NMS::where('id',$id)->first();
             $customer = Customer::where('id',$nms->customer_id)->first();
             $results = ServerTime::where('nms_id', $id)->whereBetween('date', [$start_date, $end_date])->get()->toArray();
-           
+
             $xValues = [];
             $yValues = [];
             $barColors = [];
             foreach($results as $row)
             {
                 $xValues[] = $row["date"];
-               
+
                 if($row["status"] == 0)
                 {
                     $barColors[] = "red";
@@ -824,7 +873,7 @@ public function customer_member_delete(Request $request, $id)
             $data['xValues'] = json_encode($xValues);
             $data['yValues'] = json_encode($yValues);
             $data['barColors'] = json_encode($barColors);
-          
+
             $nms->last_check_datetime = $this->get_elapsed_time($nms->last_check_datetime);
             $nms->main_ok_datetime = $this->get_elapsed_time($nms->main_ok_datetime);
             $nms->last_ok_datetime = $this->get_elapsed_time($nms->last_ok_datetime);
@@ -833,20 +882,20 @@ public function customer_member_delete(Request $request, $id)
 
             $data['last_five_records'] = ServerTime::where('nms_id',$id)->orderBy('id', 'desc')->take(5)->get();
             $data['incident_records'] = Incident::where('nms_id',$id)->orderBy('id', 'desc')->take(10)->get();
-          
+
             return view('admin.nms.logs',$data);
         }
 
         public static function get_elapsed_time($date, $end_date = null, $timings_to_display = 3) {
 
             $end_date = $end_date ? (new \DateTime($end_date))->getTimestamp() : time();
-    
+
             $estimate_time = $end_date - (new \DateTime($date))->getTimestamp();
 
             if($estimate_time < 1) {
                 return 'Now';
             }
-    
+
             $condition = [
                 12 * 30 * 24 * 60 * 60  =>  'year',
                 30 * 24 * 60 * 60       =>  'month',
@@ -855,30 +904,30 @@ public function customer_member_delete(Request $request, $id)
                 60                      =>  'minute',
                 1                       =>  'second'
             ];
-    
+
             $result = '';
             $counter = 1;
-    
+
             foreach($condition as $seconds => $string) {
                 if($counter > $timings_to_display) break;
-    
+
                 $d = $estimate_time / $seconds;
-    
+
                 if($d >= 1) {
                     $r = floor($d);
-    
+
                     /* Determine the language string needed */
                     $language_string_time = $r > 1 ?  $string . 's' : $string;
-    
+
                     /* Append it to the result */
                     $result .= ' ' . $r . ' ' . $language_string_time;
-    
+
                     $estimate_time -= $r * $seconds;
-    
+
                     $counter++;
                 }
             }
-    
+
             return $result;
         }
 
@@ -892,24 +941,24 @@ public function customer_member_delete(Request $request, $id)
        $request->validate([
            'file' => 'required|mimes:xlsx,xls,csv',
        ]);
-   
+
        Excel::import(new NmsImport, $request->file('file'));
-   
+
        return back()->with('success', 'Data imported successfully.');
    }
 
-   
+
    public function setting(){
     return view('admin.system_setting.index');
    }
 
    public function setting_add(Request $request){
-   
+
         $system_setting = $request->validate([
             'retry' => 'required',
             'timeout' => 'required',
             'country_code' => 'required',
-           
+
         ]);
 
         $result = SystemSetting::create($system_setting);
@@ -928,7 +977,7 @@ public function customer_member_delete(Request $request, $id)
         // print_r($isp_member);die;
         return view('admin.nms.import',compact('agent','member','customer','isp'));
     }
-    
+
 
 public function nms_import_create(Request $request)
 {
@@ -944,18 +993,18 @@ public function nms_import_create(Request $request)
         DB::beginTransaction();
 
         $file = $request->file('file');
-        $data = Excel::toArray([], $file); 
+        $data = Excel::toArray([], $file);
 
         foreach ($data[0] as $index => $row) {
-            if ($index === 0) continue; 
-            
+            if ($index === 0) continue;
+
             $ipAddress = isset($row[0]) ? $row[0] : null;
             $port = isset($row[1]) ? $row[1] : null;
-          
+
 
 
             if ($ipAddress && $port ) {
-                
+
                 $exists = NMS::where('ip_address', $ipAddress)
                             ->where('port', $port)
                             ->where('member_id', $request->member_id)
@@ -971,19 +1020,19 @@ public function nms_import_create(Request $request)
                     }else{
                         $data['hindi_english'] = 0;
                     }
-            
+
                     if($request->customer_alert){
                         $data['customer_alert'] = 1;
                     }else{
                         $data['customer_alert'] = 0;
                     }
-            
+
                     if($request->agent_alert){
                         $data['agent_alert'] = 1;
                     }else{
                         $data['agent_alert'] = 0;
                     }
-            
+
                     if($request->isp_alert){
                         $data['isp_alert'] = 1;
                     }else{
@@ -1010,18 +1059,18 @@ public function nms_import_create(Request $request)
                         'agent_members_names' => $request->agent_members_names,
                         'customer_members_ids' => $request->customer_members_ids,
                         'customer_members_names' => $request->customer_members_names,
-                        'whatsapp_message' => $data['whatsapp_message'], 
-                        'mail_alert' => $data['mail_alert'], 
-                        'agent_alert' => $data['agent_alert'], 
-                        'isp_alert' => $data['isp_alert'], 
-                        'customer_alert' => $data['customer_alert'], 
-                        'hindi_english' => $data['hindi_english'], 
+                        'whatsapp_message' => $data['whatsapp_message'],
+                        'mail_alert' => $data['mail_alert'],
+                        'agent_alert' => $data['agent_alert'],
+                        'isp_alert' => $data['isp_alert'],
+                        'customer_alert' => $data['customer_alert'],
+                        'hindi_english' => $data['hindi_english'],
                         'ip_address' => $ipAddress,
                         'port' => $port,
-                        
+
                     ]);
-                   
-                    
+
+
                 }
             }
         }
@@ -1039,6 +1088,6 @@ public function nms_import_create(Request $request)
     }
 }
 
- 
+
 }
 

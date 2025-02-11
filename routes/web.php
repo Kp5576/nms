@@ -56,11 +56,11 @@ Route::prefix('admin')->middleware('auth','admin')->group(function () {
 
 
     Route::get('/branch', [AdminController::class, 'list_branch'])->name('admin.branch.list');
-    Route::post('/branch', [AdminController::class, 'create_branch'])->name('admin.branch.create');
+    Route::post('/branch/create', [AdminController::class, 'create_branch'])->name('admin.branch.create');
     Route::put('/branch', [AdminController::class, 'update_branch'])->name('admin.branch.update');
     Route::delete('/branch/{id}', [AdminController::class, 'delete_branch'])->name('admin.branch.delete');
-
-    Route::get('/branch/member/{id}', [AdminController::class, 'branch_member_list'])->name('admin.branch.member.list');
+    Route::get('/branch/add', [AdminController::class, 'branch_add'])->name('admin.branch.add');
+    Route::get('/branch/{id}', [AdminController::class, 'edit_branch'])->name('admin.branch.edit');
 
     
     Route::get('/operator', [AdminController::class, 'list_operator'])->name('admin.operator.list');
@@ -121,6 +121,8 @@ Route::prefix('admin')->middleware('auth','admin')->group(function () {
     Route::get('/ajax_user/isp/{id}', [AdminController::class, 'ajaxUser_isp'])->name("admin.nms.ajax_isp");
     Route::get('/ajax_user/agent/{id}', [AdminController::class, 'ajaxUser_agent'])->name("admin.nms.ajax_agent");
     Route::get('/ajax_user/customer/{id}', [AdminController::class, 'ajaxUser_customer'])->name("admin.nms.ajax_customer");
+    Route::get('/ajax_user/operator/{id}', [AdminController::class, 'ajaxUser_operator'])->name("admin.barnch.ajax_operator");
+
 
 
     // -------------------------------Export report  ------------

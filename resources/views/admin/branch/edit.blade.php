@@ -16,10 +16,10 @@
 </style>
 <!-- PAGE-HEADER -->
 <div class="page-header">
-   <h1 class="page-title">Manage NMS</h1>
+   <h1 class="page-title">Manage Branch</h1>
    <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="{{ route('admin') }}">Home</a></li>
-      <li class="breadcrumb-item active" aria-current="page">Manage NMS</li>
+      <li class="breadcrumb-item active" aria-current="page">Manage Branch</li>
    </ol>
 </div>
 <!-- PAGE-HEADER END -->
@@ -28,9 +28,9 @@
    <div class="col-xl-12 col-md-12">
       <div class="card cart">
          <div class="card-header">
-            <h3 class="card-title">NMS Edit</h3>
+            <h3 class="card-title">Branch Edit</h3>
          </div>
-         <form action="{{route('admin.nms.update')}}" method="POST">
+         <form action="{{route('admin.branch.update')}}" method="POST">
             @csrf
             @method('PUT')
             <div class="card-body">
@@ -51,9 +51,9 @@
                     <label>Port</label>
                     <input type="number" name="port" value="{{$nms->port}}" class="form-control" placeholder="port" required/>
                 </div>
-                
+
                <hr/>
-               
+
                <div class="form-group">
                   <div class=" row mb-2">
                      <label class="col-md-3 form-label" for="">ISP</label>
@@ -126,10 +126,17 @@
                </div>
             </div>
             <hr/>
-               
-               
+
+
                <div class="mb-0 mt-4 row justify-content-end">
                   <div class="col-md-3">
+                    <input type="hidden" name="agent_members_ids" id="agent_members_ids" value="">
+                     <input type="hidden" name="customer_members_ids" id="customer_members_ids" value="">
+                     <input type="hidden" name="operator_name" id="customer_name" value="">
+                     <input type="hidden" name="isp_name" id="isp_name" value="">
+                     <input type="hidden" name="agent_name" id="agent_name" value="">
+
+                     <input type="hidden" name="branch_code"  value="">
                      <input type="hidden" name="record_id" value="{{ $nms->id }}"/>
 
                      <button type="submit" name="submit" class="btn btn-success" >Submit</button>
@@ -164,7 +171,7 @@
                      txt += "<option value='"+result.isp_names[i]["id"]+"'>"+result.isp_names[i]["name"]+"</option>";
                   }
                   $("#isp_members_ids").html(txt);
-      
+
                }
            });
        });
@@ -176,7 +183,7 @@
                type:'get',
                dataType:'JSON',
                success:function(result){
-                 
+
 
                    $("#agent_members_names").val(result.agent_names);
                    $("#agent_members_ids").val(result.agent_ids);
@@ -188,14 +195,16 @@
    $(document).ready(function(){
        $("#select_customer").change(function(){
            $.ajax({
-               url: '/admin/ajax_user/customer/'+$(this).val(),
+               url: '/admin/ajax_user/operator/'+$(this).val(),
                type:'get',
                dataType:'JSON',
                success:function(result){
-                 
 
-                   $("#customer_members_names").val(result.customer_names);
-                   $("#customer_members_ids").val(result.customer_ids);
+                $("#customer_members_names").val(result.operator_member_names);
+                   //$("#customer_members_ids").val(result.customer_ids);
+                   $("#customer_name").val(result.operator_name);
+                //    $("#customer_members_names").val(result.customer_names);
+                //    $("#customer_members_ids").val(result.customer_ids);
                }
            });
        });

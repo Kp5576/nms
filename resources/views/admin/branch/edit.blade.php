@@ -155,7 +155,7 @@
    $(document).ready(function(){
 
       $('#isp_members_ids').select2();
-      $("#isp_name").val("{{$nms->isp_name}}");
+      $("#select_isp").val("{{$nms->isp_name}}");
        $("#select_isp").change(function(){
          $("#isp_members_ids").html("");
            $.ajax({
@@ -177,7 +177,7 @@
        });
    });
    $(document).ready(function(){
-    $("#agent_name").val("{{$nms->agent_name}}");
+    $("#select_agent").val("{{$nms->agent_name}}");
        $("#select_agent").change(function(){
            $.ajax({
                url: '/admin/ajax_user/agent/'+$(this).val(),
@@ -195,7 +195,7 @@
    });
 
    $(document).ready(function(){
-    $("#customer_name").val("{{$nms->operator_name}}");
+    $("#select_customer").val("{{$nms->operator_name}}");
        $("#select_customer").change(function(){
            $.ajax({
                url: '/admin/ajax_user/operator/'+$(this).val(),

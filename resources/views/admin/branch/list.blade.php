@@ -37,7 +37,7 @@
                                     <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th>Barnch Code</th>
+                                            <th>Barnch Code kp</th>
                                             <th>Branch Name</th>
                                             <th>Address</th>
                                             <th>IP</th>

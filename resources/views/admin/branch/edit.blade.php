@@ -165,7 +165,7 @@
                success:function(result){
                   //  $("#isp_member_names").val();
                   //  $("#isp_members_ids").val(result.isp_ids);
-
+                  $("#isp_name").val(result.isp_name);
                   var txt = "";
                   for(var i=0;i<result.isp_names.length;i++){
                      txt += "<option value='"+result.isp_names[i]["id"]+"'>"+result.isp_names[i]["name"]+"</option>";
@@ -187,6 +187,7 @@
 
                    $("#agent_members_names").val(result.agent_names);
                    $("#agent_members_ids").val(result.agent_ids);
+                   $("#agent_name").val(result.agent_name);
                }
            });
        });

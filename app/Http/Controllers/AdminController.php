@@ -292,9 +292,9 @@ class AdminController extends Controller {
              'isp_name' => '',
              'agent_name' => '',
              'branch_code' => ''
-             
+
         ]);
-        
+
         // if($code = DB::table('branch_master')->orderBy('id', 'DESC')->first()->id){
         //     $code;
         // }
@@ -306,16 +306,16 @@ class AdminController extends Controller {
         $code = $code1 + $code2;
         $agent_list['branch_code'] = $code+1;
         $result = DB::table('branch_master')->insert($agent_list);
-        
+
         Alert::success('Success', 'Record inserted!');
-        
+
         return redirect('/admin/branch');
     }
 
     public function edit_branch($id){
-        
+
         $isp      = ISP::get();
-        $customer = Customer::get();
+        $customer = ISP::where('operator',1)->get();
         $agent = Agent::get();
 
         $nms = DB::table('branch_master')->where('id', $id)->first();
@@ -346,7 +346,7 @@ class AdminController extends Controller {
         return redirect('/admin/branch');
     }
 
-   
+
 
 
 // ------------------------------Agent Starting-------------------------------------
@@ -652,7 +652,7 @@ public function customer_member_delete(Request $request, $id)
         //   $member_ids = implode(',',$member_ids);
 //,"isp_ids"=>$member_ids
         $isp_name = ISP::where('id',$id)->first()->name;
-        
+
           echo json_encode(array("isp_names"=>$member_names , "isp_name"=>$isp_name ));
 
     }
@@ -682,7 +682,7 @@ public function customer_member_delete(Request $request, $id)
         //   $member_ids = implode(',',$member_ids);
 //,"isp_ids"=>$member_ids
         $isp_name = ISP::where('id',$id)->first()->name;
-        
+
           echo json_encode(array("operator_member_names"=>$member_names , "operator_name"=>$isp_name ));
     }
 

@@ -27,7 +27,7 @@
                         </div>
                         <div class="card-body">
                             <!-- Button to Open the Modal -->
-                            <button type="button" class="btn btn-success">
+
                                 <a href="{{route('admin.branch.add')}}" class="btn btn-success">
                                     Add Branch Master
                                 </a>
@@ -41,7 +41,7 @@
                     <a href="{{route('admin.nms.import')}}" class="btn btn-success">
                         Import
                     </a>
-                            </button>
+
                             <div class="table-responsive mt-2">
                                 <table class="table table-bordered table-vcenter text-nowrap" id="basic-datatable2">
                                     <thead>

@@ -13,6 +13,7 @@ use Illuminate\Support\Str;
 use App\Models\Member;
 use App\Models\NMS;
 use App\Models\SystemSetting;
+use App\Models\Branch;
 
 use App\Models\ServerTime;
 use App\Models\Incident;
@@ -307,7 +308,7 @@ class AdminController extends Controller {
         $code2 = rand(0,10);
         $code = $code1 + $code2;
         $agent_list['branch_code'] = $code+1;
-        $result = DB::table('branch_master')->insert($agent_list);
+        $result = Branch::create($agent_list);
 
         Alert::success('Success', 'Record inserted!');
 

@@ -13,6 +13,6 @@ class BranchExport implements FromCollection
     public function collection()
     {
         //
-        return DB::table('branch_master')->all();
+        return DB::table('branch_master')->get();
     }
 }

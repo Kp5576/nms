@@ -27,7 +27,7 @@ class BranchExport implements FromCollection, WithHeadings
             'Port',
             'ISP Name',
             'Agent Name',
-            'Customer Name',
+            'Operator Name',
 
         ];
     }

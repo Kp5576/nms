@@ -14,7 +14,7 @@ class BranchExport implements FromCollection, WithHeadings
     public function collection()
     {
         //
-        return DB::table('branch_master')->select('branch_code','branch_code','address','ip','port','operator_name','isp_name','agent_name')->get();
+        return DB::table('branch_master')->select('branch_code','branch_name','address','ip','port','operator_name','isp_name','agent_name')->get();
     }
 
     public function headings(): array

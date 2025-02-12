@@ -38,9 +38,36 @@
                     </a>
                     &nbsp;
                     &nbsp;
-                    <a href="{{route('admin.nms.import')}}" class="btn btn-success">
+                    <a href="#" class="btn btn-success" data-toggle="modal" data-target="#exampleModalCenter">
                         Import
                     </a>
+
+                    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalCenterTitle">Import Branch</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                                <form method="POST" action="{{route('import_branch')}}" enctype="multipart/form-data">
+                                    @csrf
+                                    <label for="Select File">Select File</label>
+                                    <input type="file" name="file" class="form-control">
+                                    <div class="mt-5">
+                                        <button type="submit" class="btn btn-success">Import</button>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
                     <form method="POST" action="{{route('import_branch')}}" enctype="multipart/form-data" class="btn btn-success">
                         @csrf
                         <label for="Select File">Select File</label>

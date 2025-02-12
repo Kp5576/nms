@@ -176,8 +176,9 @@
                                     <input type="file" name="file" class="form-control">
                                     <div class="mt-5">
                                         <button type="submit" class="btn btn-success">Import</button>
+                                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                                     </div>
-                                   <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                                   
                                     </div>
                                 </form>
                             </div>

@@ -20,13 +20,13 @@ class BranchImport implements ToModel, WithHeadingRow
         return new Branch([
             //
             'Branch Code' => $row['branch_code'],
-            'branch_name' => $row['Branch Name'],
-            'address' => $row['Address'],
-            'ip' => $row['IP Address'],
-            'port' => $row['Port'],
-            'isp_name' => $row['Isp Name'],
-            'operator_name' => $row['Operator Name'],
-            'agent_name' => $row['Agent Name']
+            'Branch Name' => $row['branch_name'],
+            'Address' => $row['address'],
+            'IP Address' => $row['ip'],
+            'Port' => $row['port'],
+            'Isp Name' => $row['isp_name'],
+            'Operator Name' => $row['operator_name'],
+            'Agent Name' => $row['agent_name']
         ]);
     }
 }

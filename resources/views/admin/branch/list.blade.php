@@ -38,7 +38,7 @@
                     </a>
                     &nbsp;
                     &nbsp;
-                    <a href="#" class="btn btn-success" data-toggle="modal" data-target="#exampleModalCenter">
+                    <a href="#" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#importmyModal">
                         Import
                     </a>
 
@@ -293,9 +293,10 @@
                     {{-- -----------------------delete_model----------------------- --}}
 
 
-                    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered" role="document">
-                          <div class="modal-content">
+                    <div class="modal" id="importMyModal">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+
                             <div class="modal-header">
                               <h5 class="modal-title" id="exampleModalCenterTitle">Import Branch</h5>
                               <button type="button" class="close" data-dismiss="modal" aria-label="Close">

@@ -359,6 +359,9 @@ class AdminController extends Controller {
         return redirect('/admin/branch');
     }
 
+    public function exportbranchData(){
+        return Excel::download(new BranchExport, 'branch.xlsx');
+    }
 
 
 

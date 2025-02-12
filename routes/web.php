@@ -62,7 +62,10 @@ Route::prefix('admin')->middleware('auth','admin')->group(function () {
     Route::get('/branch/add', [AdminController::class, 'branch_add'])->name('admin.branch.add');
     Route::get('/branch/{id}', [AdminController::class, 'edit_branch'])->name('admin.branch.edit');
 
-    
+    Route::get('/export_branch', [AdminController::class, 'exportbranchData'])->name('export_branch');
+
+
+
     Route::get('/operator', [AdminController::class, 'list_operator'])->name('admin.operator.list');
     Route::post('/operator', [AdminController::class, 'create_operator'])->name('admin.operator.create');
     Route::put('/operator', [AdminController::class, 'update_operator'])->name('admin.operator.update');

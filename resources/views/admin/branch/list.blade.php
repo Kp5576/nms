@@ -33,7 +33,7 @@
                                 </a>
                                 &nbsp;
                     &nbsp;
-                    <a href="{{route('export_nms')}}" class="btn btn-success">
+                    <a href="{{route('export_branch')}}" class="btn btn-success">
                         Exort
                     </a>
                     &nbsp;

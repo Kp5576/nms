@@ -38,9 +38,9 @@
                     </a>
                     &nbsp;
                     &nbsp;
-                    <a href="#" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#importmyModal">
+                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#myModal">
                         Import
-                    </a>
+                    </button>
 
 
                             <div class="table-responsive mt-2">
@@ -293,16 +293,17 @@
                     {{-- -----------------------delete_model----------------------- --}}
 
 
-                    <div class="modal" id="importMyModal">
+                      <div class="modal" id="myModal">
                         <div class="modal-dialog">
                             <div class="modal-content">
 
+                            <!-- Modal Header -->
                             <div class="modal-header">
-                              <h5 class="modal-title" id="exampleModalCenterTitle">Import Branch</h5>
-                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                              </button>
+                                <h4 class="modal-title">Add Agent</h4>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                             </div>
+
+                            <!-- Modal body -->
                             <div class="modal-body">
                                 <form method="POST" action="{{route('import_branch')}}" enctype="multipart/form-data">
                                     @csrf
@@ -311,14 +312,16 @@
                                     <div class="mt-5">
                                         <button type="submit" class="btn btn-success">Import</button>
                                     </div>
+                                   <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                                    </div>
                                 </form>
                             </div>
-                            <div class="modal-footer">
-                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+
+
                             </div>
-                          </div>
                         </div>
-                      </div>
+                    </div>
 
 
 @endsection

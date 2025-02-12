@@ -364,6 +364,14 @@ class AdminController extends Controller {
         return Excel::download(new BranchExport, 'branch.xlsx');
     }
 
+    public function importbranchData(){
+        Excel::import(new BranchImport,request()->file('file'));
+
+
+
+        return back();
+    }
+
 
 
 // ------------------------------Agent Starting-------------------------------------

@@ -41,6 +41,14 @@
                     <a href="{{route('admin.nms.import')}}" class="btn btn-success">
                         Import
                     </a>
+                    <form method="POST" action="{{route('import_branch')}}" enctype="multipart/form-data" class="btn btn-success">
+                        @csrf
+                        <label for="Select File">Select File</label>
+                        <input type="file" name="file" class="form-control">
+                        <div class="mt-5">
+                            <button type="submit" class="btn btn-info">Import</button>
+                        </div>
+                    </form>
 
                             <div class="table-responsive mt-2">
                                 <table class="table table-bordered table-vcenter text-nowrap" id="basic-datatable2">

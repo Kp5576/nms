@@ -164,7 +164,7 @@
 
                             <!-- Modal Header -->
                             <div class="modal-header">
-                                <h4 class="modal-title">Add Agent</h4>
+                                <h4 class="modal-title">Import Branch</h4>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                             </div>
 
@@ -178,8 +178,8 @@
                                         <button type="submit" class="btn btn-success">Import</button>
                                         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                                     </div>
-                                   
-                                    </div>
+
+
                                 </form>
                             </div>
 

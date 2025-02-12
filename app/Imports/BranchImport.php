@@ -26,7 +26,7 @@ class BranchImport implements ToModel, WithHeadingRow
             'IP Address' => $row['port'],
 
             'Isp Name' => $row['isp_name'],
-            'Operator Name' => $row['operator_name'],
+            'Operator Name' => $row['agent_name'],
             'Agent Name' => $row['agent_name']
         ]);
     }

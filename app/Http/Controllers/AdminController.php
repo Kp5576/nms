@@ -278,7 +278,7 @@ class AdminController extends Controller {
     public function branch_add(){
         //$data     = NMS::get();
         //$member = User::whereIn('role_id',[2])->get();
-        $isp      = ISP::get();
+        $isp      = ISP::where('operator',0)->get();
         $customer = ISP::where('operator',1)->get();
         $agent = Agent::get();
 
@@ -317,7 +317,7 @@ class AdminController extends Controller {
 
     public function edit_branch($id){
 
-        $isp      = ISP::get();
+        $isp      = ISP::where('operator',0)->get();
         $customer = ISP::where('operator',1)->get();
         $agent = Agent::get();
 

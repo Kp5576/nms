@@ -42,13 +42,13 @@
                 </div>
                 <div class="form-group">
                     <label>IP</label>
-                    <input type="number" name="ip" class="form-control" placeholder="I.P." required/>
+                    <input type="text" name="ip" class="form-control" placeholder="I.P." required/>
                 </div>
                 <div class="form-group">
                     <label>Port</label>
                     <input type="number" name="port" class="form-control" placeholder="port" required/>
                 </div>
-                
+
                <hr/>
                <div class="form-group">
                   <div class=" row mb-2">
@@ -69,7 +69,7 @@
                      <div class="col-md-6">
                         <!-- <input type="text" readonly name="isp_members_names" id="isp_members_names" class="form-control"/> -->
                         <input type="hidden" name="isp_members_names" value=""/>
-                     
+
                          <select class="form-control select2" id="isp_members_ids" name="isp_members_ids[]" multiple="true">
                          </select>
                      </div>
@@ -122,10 +122,10 @@
                   </div>
                </div>
                <hr/>
-             
-               
-             
-               
+
+
+
+
                <div class="mb-0 mt-4 row justify-content-end">
                   <div class="col-md-3">
                      <!-- <input type="hidden" name="isp_members_ids" id="isp_members_ids" value=""> -->
@@ -134,13 +134,13 @@
                      <input type="hidden" name="operator_name" id="customer_name" value="">
                      <input type="hidden" name="isp_name" id="isp_name" value="">
                      <input type="hidden" name="agent_name" id="agent_name" value="">
-                     
+
                      <input type="hidden" name="branch_code"  value="">
 
 
 
                      <button type="submit" name="submit" class="btn btn-success" >Submit</button>
-                    
+
                   </div>
                </div>
             </div>
@@ -156,7 +156,7 @@
 <script>
    $(document).ready(function(){
 
-    
+
 
       $('#isp_members_ids').select2();
 
@@ -176,7 +176,7 @@
                      txt += "<option value='"+result.isp_names[i]["id"]+"'>"+result.isp_names[i]["name"]+"</option>";
                   }
                   $("#isp_members_ids").html(txt);
-      
+
                }
            });
        });
@@ -188,7 +188,7 @@
                type:'get',
                dataType:'JSON',
                success:function(result){
-                 
+
 //alert(result.agent_name);
                    $("#agent_members_names").val(result.agent_names);
                    $("#agent_members_ids").val(result.agent_ids);
@@ -204,11 +204,11 @@
                type:'get',
                dataType:'JSON',
                success:function(result){
-                 
+
 //alert(result.customer_name);
                    $("#customer_members_names").val(result.operator_member_names);
                    //$("#customer_members_ids").val(result.customer_ids);
-                   $("#customer_name").val(result.operator_name); 
+                   $("#customer_name").val(result.operator_name);
                }
            });
        });

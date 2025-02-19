@@ -25,11 +25,11 @@
                 <div class="card-header">
                 <a href="{{route('admin.nms.add')}}" class="btn btn-success">
                         Add NMS
-                    </a> 
+                    </a>
                     &nbsp;
                     &nbsp;
                     <a href="{{route('export_nms')}}" class="btn btn-success">
-                        Exort 
+                        Exort
                     </a>
                     &nbsp;
                     &nbsp;
@@ -47,7 +47,7 @@
                 </div>
                 <div class="card-body">
                     <!-- Button to Open the Modal -->
-                   
+
                     <div class="table-responsive mt-2">
                           <table class="table table-bordered text-nowrap border-bottom" id="basic-datatable2">
                             <thead>
@@ -58,7 +58,8 @@
                                     <th>Customer Branch</th>
                                     <th>ISP</th>
                                     <th>Agent</th>
-                                  
+                                    <th>Branch</th>
+
                                     <th>Ip Address</th>
                                     <th>Port</th>
                                     <th>Status</th>
@@ -73,11 +74,13 @@
                                     </td>
                                     <td class="text-wrap" id="member-{{$record->id}}">{{ $record->user->company}}</td>
                                     {{-- <td class="font-weight-bold">{{ $record->customer->name }}</td> --}}
-                                    <td class="font-weight-bold">{{ $record->branch_name }}</td> 
+                                    <td class="font-weight-bold">{{ $record->branch_name }}</td>
 
-                                    <td class="text-wrap">{{ $record->isp->name }}</td> 
-                                    <td class="text-wrap">{{ $record->agent->name }}</td> 
-                                   
+                                    <td class="text-wrap">{{ $record->isp->name }}</td>
+                                    <td class="text-wrap">{{ $record->agent->name }}</td>
+                                    <td class="text-wrap">{{ $record->branch }}</td>
+
+
                                     <td class="text-wrap">{{$record->ip_address}}</td>
                                     <td class="text-wrap">{{$record->port}}</td>
                                     <td class="text-wrap">
@@ -95,13 +98,13 @@
                                             @method('DELETE')
                                             <button type="submit" onclick="return confirm('do you want to delete it?')" class="btn btn-secondary-light border-0 me-1"><i class="icon icon-trash align-middle"></i></button>
                                         </form>
-                                       
+
                                         <a href="{{ route('admin.nms.view',['id' => $record->id]) }}" class="btn btn-info-light edit-record border-0 me-1" data-bs-toggle="tooltip" data-bs-placement="top" title="View"><i class="icon icon-eye align-middle"></i></a>
                                         <a href="javascript:void(0)" class="btn btn-secondary border-0 me-1 ping-btn" rel="{{ $record->ip_address }}"  data-bs-toggle="modal" data-bs-target="#myModal">Ping</a>
 
                                     </td>
                                 </tr>
-                                 @endforeach 
+                                 @endforeach
                             </tbody>
                         </table>
                         {!! $nms_list->links('pagination::bootstrap-5') !!}
@@ -110,7 +113,7 @@
                 </div>
             </div>
         </div>
-        
+
     </div>
 
 
@@ -128,11 +131,11 @@
                                     </button>
                                 </div>
                                 <div class="modal-body" id="my-result">
-                                    
+
                                 </div>
                                 <div class="modal-footer">
                                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                                
+
                                 </div>
 
                             </div>
@@ -151,11 +154,11 @@
                                     </button>
                                 </div>
                                 <div class="modal-body" id="my-result2">
-                                    
+
                                 </div>
                                 <div class="modal-footer">
                                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                                
+
                                 </div>
 
                             </div>
@@ -176,13 +179,13 @@
 </script>
 <script>
 $(document).ready(function(){
-  
+
   $(".ping-btn").click(function(){
-    
+
      $("#my-result").html("");
-    
+
     var ip = $(this).attr("rel");
-    
+
     $.ajax({
       url: "{{ url('/') }}/exec/ping/"+ip,
       type: "GET",
@@ -190,17 +193,17 @@ $(document).ready(function(){
         $("#my-result").html(result);
       }
     })
-    
-    
+
+
   });
-  
+
 
   $(".flap-btn").click(function(){
-    
+
     $("#my-result2").html("");
-   
+
    var ip = $(this).attr("rel");
-   
+
    $.ajax({
      url: "{{ url('/') }}/exec/flap/"+ip,
      type: "GET",
@@ -208,11 +211,11 @@ $(document).ready(function(){
        $("#my-result2").html(result);
      }
    })
-   
-   
+
+
  });
 });
-  
+
 </script>
 		<!-- Handle Counter js -->
 @vite('resources/assets/js/handlecounter.js')

@@ -83,7 +83,7 @@
                         <select name="customer_id" required class="form-control" id="select_operator" >
                             <option value="">Select Option</option>
                            @foreach($operator as $result)
-                           <option  value="{{$result->id}}">{{$result->name}},{{$result->branch_name}}</option>
+                           <option  value="{{$result->id}}">{{$result->name}}</option>
                            @endforeach
                         </select>
                      </div>

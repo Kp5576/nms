@@ -294,6 +294,7 @@ class AdminController extends Controller {
              'operator_name' => '',
              'isp_name' => '',
              'agent_name' => '',
+             'customer_name' => '',
              'branch_code' => ''
 
         ]);

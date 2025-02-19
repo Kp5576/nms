@@ -157,6 +157,8 @@
                      <input type="hidden" name="operator_name" id="customer_name" value="">
                      <input type="hidden" name="isp_name" id="isp_name" value="">
                      <input type="hidden" name="agent_name" id="agent_name" value="">
+                     <input type="hidden" name="customer_name" id="customer_name" value="">
+
 
                      <input type="hidden" name="branch_code"  value="">
                      <input type="hidden" name="record_id" value="{{ $nms->id }}"/>
@@ -246,6 +248,8 @@
 
                    $("#customer_members_names").val(result.customer_names);
                    $("#customer_members_ids").val(result.customer_ids);
+                   $("#customer_name").val(result.customer_name);
+
                }
            });
        });

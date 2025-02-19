@@ -19,8 +19,6 @@
         <!-- BOOTSTRAP CSS -->
 	    <link id="style" href="{{asset('build/assets/plugins/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" >
 
-
-
         <!-- APP CSS & APP SCSS -->
         @vite(['resources/css/app.css' , 'resources/sass/app.scss'])
 
@@ -88,10 +86,6 @@
         @include('layouts.components.scripts')
         @include('sweetalert::alert', ['cdn' => 'https://cdn.jsdelivr.net/npm/sweetalert2@9'])
       <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-      <!--bootstrp script-->
-
-
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
       <script>
          $(function() {
          var url = window.location;

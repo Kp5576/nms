@@ -154,7 +154,7 @@
                   <div class="col-md-3">
                     <input type="hidden" name="agent_members_ids" id="agent_members_ids" value="">
                      <input type="hidden" name="customer_members_ids" id="customer_members_ids" value="">
-                     <input type="hidden" name="operator_name" id="customer_name" value="">
+                     <input type="hidden" name="operator_name" id="operator_name" value="">
                      <input type="hidden" name="isp_name" id="isp_name" value="">
                      <input type="hidden" name="agent_name" id="agent_name" value="">
                      <input type="hidden" name="customer_name" id="customer_name" value="">
@@ -229,7 +229,7 @@
 
                 $("#customer_members_names").val(result.operator_member_names);
                    //$("#customer_members_ids").val(result.customer_ids);
-                   $("#customer_name").val(result.operator_name);
+                   $("#operator_name").val(result.operator_name);
                 //    $("#customer_members_names").val(result.customer_names);
                 //    $("#customer_members_ids").val(result.customer_ids);
                }

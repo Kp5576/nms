@@ -46,6 +46,18 @@
                   </div>
                </div>
                <hr/>
+               <div class=" row mb-2">
+                <label class="col-md-3 form-label" for="">Branch</label>
+                <div class="col-md-6">
+                   <select name="member_id" required class="form-control">
+                      <option value="">Select Option</option>
+                      @foreach($branch as $data)
+                          <option  value="{{$data->branch_name}}">{{$data->branch_name}} </option>
+                      @endforeach
+                   </select>
+                </div>
+             </div>
+             <hr/>
                <div class="form-group">
                   <div class=" row mb-2">
                      <label class="col-md-3 form-label" for="">ISP</label>
@@ -226,14 +238,14 @@
                      txt += "<option value='"+result.isp_names[i]["id"]+"'>"+result.isp_names[i]["name"]+"</option>";
                   }
                   $("#isp_members_ids").html(txt);
-                  
+
                   var selected_ids = "<?php echo $nms->isp_members_ids;?>";
 
                   var str_array = selected_ids.split(',');
                   var new_array = [];
                      for(var n = 0; n < str_array.length; n++) {
                         new_array.push(str_array[n]);
-                                      
+
                      }
                      $("#isp_members_ids").val(new_array);
                }
@@ -254,7 +266,7 @@
                      txt += "<option value='"+result.isp_names[i]["id"]+"'>"+result.isp_names[i]["name"]+"</option>";
                   }
                   $("#isp_members_ids").html(txt);
-      
+
                }
            });
        });
@@ -266,7 +278,7 @@
                type:'get',
                dataType:'JSON',
                success:function(result){
-                 
+
 
                    $("#agent_members_names").val(result.agent_names);
                    $("#agent_members_ids").val(result.agent_ids);
@@ -282,7 +294,7 @@
                type:'get',
                dataType:'JSON',
                success:function(result){
-                 
+
 
                    $("#customer_members_names").val(result.customer_names);
                    $("#customer_members_ids").val(result.customer_ids);

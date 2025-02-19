@@ -44,7 +44,7 @@
                   </div>
                </div>
                <hr/>
-               <div class="card-body">
+
                 <div class=" row mb-2">
                    <label class="col-md-3 form-label" for="">Branch</label>
                    <div class="col-md-6">

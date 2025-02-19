@@ -734,6 +734,7 @@ public function customer_member_delete(Request $request, $id)
             'ip_address' => 'required',
             'port'        => '',
             'unique_id' => Str::random(8),
+            'branch' => '',
 
         ]);
 
@@ -793,9 +794,10 @@ public function customer_member_delete(Request $request, $id)
         $isp      = ISP::get();
         $customer = Customer::get();
         $agent = Agent::get();
+        $branch = Branch::get();
 
         $nms =  NMS::where('id', $id)->first();
-        return view('admin.nms.edit',['data'=>$data, 'member'=>$member, 'isp'=>$isp, 'customer'=>$customer, 'agent'=>$agent, 'nms' => $nms]);
+        return view('admin.nms.edit',['data'=>$data, 'branch'=>$branch, 'member'=>$member, 'isp'=>$isp, 'customer'=>$customer, 'agent'=>$agent, 'nms' => $nms]);
     }
 
     public function nms_update(Request $request){
@@ -812,6 +814,7 @@ public function customer_member_delete(Request $request, $id)
             'agent_members_names' => '',
             'customer_members_ids' => '',
             'customer_members_names' => '',
+            'branch' => '',
         ]);
 
         if($request->hindi_english){

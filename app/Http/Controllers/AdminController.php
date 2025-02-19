@@ -372,6 +372,8 @@ class AdminController extends Controller {
     public function importbranchData(){
         Excel::import(new BranchImport,request()->file('file'));
 
+        Alert::success('Success', 'Record Imported!');
+
 
 
         return back();

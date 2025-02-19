@@ -18,12 +18,15 @@
 
         <!-- BOOTSTRAP CSS -->
 	    <link id="style" href="{{asset('build/assets/plugins/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" >
-       
+
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
         <!-- APP CSS & APP SCSS -->
         @vite(['resources/css/app.css' , 'resources/sass/app.scss'])
 
         @yield('styles')
-        
+
         <style>
                 .form-switch .form-check-input
                 {
@@ -46,7 +49,7 @@
 		<div class="page">
 
             <div class="page-main">
-        
+
                 <!-- App-Header -->
                 @include('layouts.components.app-header')
                 <!-- End App-Header -->
@@ -59,25 +62,25 @@
 				<div class="app-content main-content">
 					<div class="side-app">
 						<div class="main-container">
-                        
+
                             @yield('content')
 
                         </div>
                     </div>
                     <!-- Container closed -->
-                </div>            
+                </div>
                 <!-- main-content closed -->
 
             </div>
 
-         
-         
-     
+
+
+
             <!-- Footer opened -->
 			@include('layouts.components.footer')
             <!-- End Footer -->
-       
-        
+
+
 
 		</div>
         <!-- END PAGE-->
@@ -86,6 +89,11 @@
         @include('layouts.components.scripts')
         @include('sweetalert::alert', ['cdn' => 'https://cdn.jsdelivr.net/npm/sweetalert2@9'])
       <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+      <!--bootstrp script-->
+      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
       <script>
          $(function() {
          var url = window.location;
@@ -150,7 +158,7 @@
                  }, false);
          })();
       </script>
-		
+
         <!-- APP JS-->
 		@vite('resources/js/app.js')
         <!-- END SCRIPTS -->

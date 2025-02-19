@@ -279,10 +279,11 @@ class AdminController extends Controller {
         //$data     = NMS::get();
         //$member = User::whereIn('role_id',[2])->get();
         $isp      = ISP::where('operator',0)->get();
-        $customer = ISP::where('operator',1)->get();
+        $operator = ISP::where('operator',1)->get();
         $agent = Agent::get();
+        $customer = Customer::get();
 
-        return view('admin.branch.add',[ 'isp'=>$isp, 'customer'=>$customer, 'agent'=>$agent]);
+        return view('admin.branch.add',[ 'isp'=>$isp, 'customer'=>$customer, 'agent'=>$agent, 'operator'=>$operator]);
     }
 
     public function create_branch(Request $request){

@@ -90,7 +90,7 @@
         @include('sweetalert::alert', ['cdn' => 'https://cdn.jsdelivr.net/npm/sweetalert2@9'])
       <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
       <!--bootstrp script-->
-
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
       <script>
          $(function() {
          var url = window.location;

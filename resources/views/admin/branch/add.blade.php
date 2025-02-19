@@ -46,7 +46,7 @@
                 </div>
                 <div class="form-group">
                     <label>Port</label>
-                    <input type="number" name="port" class="form-control" placeholder="port" required/>
+                    <input type="number" name="port" class="form-control" placeholder="port"/>
                 </div>
 
                <hr/>

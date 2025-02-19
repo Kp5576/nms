@@ -80,7 +80,7 @@
                   <div class=" row mb-2">
                      <label class="col-md-3 form-label" for="">OPERATOR</label>
                      <div class="col-md-6">
-                        <select name="customer_id" required class="form-control" id="select_customer" >
+                        <select name="customer_id" required class="form-control" id="select_operator" >
                             <option value="">Select Option</option>
                            @foreach($customer as $result)
                            <option  value="{{$result->id}}">{{$result->name}},{{$result->branch_name}}</option>
@@ -132,6 +132,15 @@
                            <option  value="{{$result->id}}">{{$result->name}},{{$result->branch_name}}</option>
                            @endforeach
                         </select>
+                     </div>
+                  </div>
+               </div>
+               <hr/>
+               <div class="form-group">
+                  <div class=" row mb-2">
+                     <label class="col-md-3 form-label" for="">Customer Members Names</label>
+                     <div class="col-md-6">
+                        <input type="text" readonly name="customer_members_names" id="customer_members_names" class="form-control"/>
                      </div>
                   </div>
                </div>
@@ -211,7 +220,7 @@
        });
    });
    $(document).ready(function(){
-       $("#select_customer").change(function(){
+       $("#select_operator").change(function(){
            $.ajax({
                url: '/admin/ajax_user/operator/'+$(this).val(),
                type:'get',

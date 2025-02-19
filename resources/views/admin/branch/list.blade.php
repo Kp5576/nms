@@ -49,7 +49,7 @@
                         </button>
                         <div class="dropdown-menu" id="imort-link" style="position: relative;">
                           <!-- Dropdown menu links -->
-                          <a href="{{ url('public/build/assets/sample_file_product.xlsx') }}" style="width:100%"
+                          <a href="{{ url('public/build/assets/branch.xlsx') }}" style="width:100%"
                      class="btn btn-secondary btn-full">Download Sample File</a>
                         </div>
                       </div>

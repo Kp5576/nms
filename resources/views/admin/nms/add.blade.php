@@ -47,7 +47,7 @@
                <div class=" row mb-2">
                 <label class="col-md-3 form-label" for="">Branch</label>
                 <div class="col-md-6">
-                   <select name="member_id" required class="form-control">
+                   <select name="branch" required class="form-control">
                       <option value="">Select Option</option>
                       @foreach($branch as $data)
                           <option  value="{{$data->branch_name}}">{{$data->branch_name}} </option>

@@ -2,7 +2,7 @@
 @section('styles')
 @endsection
 @section('content')
-<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" /> 
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 <style>
    .d-flex {
     display: flex;
@@ -63,7 +63,7 @@
                      <div class="col-md-6">
                         <!-- <input type="text" readonly name="isp_members_names" id="isp_members_names" class="form-control"/> -->
                         <input type="hidden" name="isp_members_names" value=""/>
-
+                     
                          <select class="form-control select2" id="isp_members_ids" name="isp_members_ids[]" multiple="true">
                          </select>
                      </div>
@@ -122,7 +122,7 @@
                      <div class="col-md-6 d-flex">
                         <input type="text" name="ip_address" class="form-control" required placeholder="IP address" style="flex: 1;">
                         <input type="text" name="port" class="form-control" style="width: 100px;" placeholder="port">
-                    </div>
+                    </div>                  
                   </div>
                </div>
                <hr/>
@@ -187,8 +187,8 @@
                   </div>
                </div>
                <hr/>
-
-
+             
+               
                <div class="mb-0 mt-4 row justify-content-end">
                   <div class="col-md-3">
                      <!-- <input type="hidden" name="isp_members_ids" id="isp_members_ids" value=""> -->
@@ -197,7 +197,7 @@
 
 
                      <button type="submit" name="submit" class="btn btn-success" >Submit</button>
-
+                    
                   </div>
                </div>
             </div>
@@ -230,7 +230,7 @@
                      txt += "<option value='"+result.isp_names[i]["id"]+"'>"+result.isp_names[i]["name"]+"</option>";
                   }
                   $("#isp_members_ids").html(txt);
-
+      
                }
            });
        });
@@ -242,7 +242,7 @@
                type:'get',
                dataType:'JSON',
                success:function(result){
-
+                 
 
                    $("#agent_members_names").val(result.agent_names);
                    $("#agent_members_ids").val(result.agent_ids);
@@ -257,7 +257,7 @@
                type:'get',
                dataType:'JSON',
                success:function(result){
-
+                 
 
                    $("#customer_members_names").val(result.customer_names);
                    $("#customer_members_ids").val(result.customer_ids);

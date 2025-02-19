@@ -122,6 +122,19 @@
                   </div>
                </div>
                <hr/>
+               <div class="form-group">
+                  <div class=" row mb-2">
+                     <label class="col-md-3 form-label" for="">CUSTOMER</label>
+                     <div class="col-md-6">
+                        <select name="customer_id" required class="form-control" id="select_customer" >
+                            <option value="">Select Option</option>
+                           @foreach($customer as $result)
+                           <option  value="{{$result->id}}">{{$result->name}},{{$result->branch_name}}</option>
+                           @endforeach
+                        </select>
+                     </div>
+                  </div>
+               </div>
 
 
 
@@ -209,6 +222,22 @@
                    $("#customer_members_names").val(result.operator_member_names);
                    //$("#customer_members_ids").val(result.customer_ids);
                    $("#customer_name").val(result.operator_name);
+               }
+           });
+       });
+   });
+
+   $(document).ready(function(){
+       $("#select_customer").change(function(){
+           $.ajax({
+               url: '/admin/ajax_user/customer/'+$(this).val(),
+               type:'get',
+               dataType:'JSON',
+               success:function(result){
+
+
+                   $("#customer_members_names").val(result.customer_names);
+                   $("#customer_members_ids").val(result.customer_ids);
                }
            });
        });

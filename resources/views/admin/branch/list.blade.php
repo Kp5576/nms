@@ -56,6 +56,7 @@
                                             <th>Operator Name</th>
                                             <th>ISP Name</th>
                                             <th>Agent Name</th>
+                                            <th>Customer Name</th>
                                             <th>Action</th>
 
 
@@ -75,6 +76,7 @@
                                             <td class="text-wrap fw-semibold" id="name-{{$record->id}}">{{ $record->operator_name }}</td>
                                             <td class="text-wrap fw-semibold" id="name-{{$record->id}}">{{ $record->isp_name }}</td>
                                             <td class="text-wrap fw-semibold" id="name-{{$record->id}}">{{ $record->agent_name }}</td>
+                                            <td class="text-wrap fw-semibold" id="name-{{$record->id}}">{{ $record->customer_name }}</td>
 
 
                                             <td>

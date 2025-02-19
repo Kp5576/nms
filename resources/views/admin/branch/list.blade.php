@@ -40,6 +40,19 @@
                     &nbsp;
 
 
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#myModal">
+                            Import
+                        </button>
+                        <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <span class="sr-only">Toggle Dropdown</span>
+                        </button>
+                        <div class="dropdown-menu">
+                          <!-- Dropdown menu links -->
+                          <a href="{{ url('public/build/assets/sample_file_product.xlsx') }}" style="width:100%"
+                     class="btn btn-secondary btn-full">Download Sample File</a>
+                        </div>
+                      </div>
 
                       <!-- Split button -->
 <div class="btn-group">

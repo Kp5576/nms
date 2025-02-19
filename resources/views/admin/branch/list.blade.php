@@ -44,10 +44,10 @@
                         <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#myModal">
                             Import
                         </button>
-                        <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" id="import" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                           <span class="sr-only">Toggle Dropdown</span>
                         </button>
-                        <div class="dropdown-menu" style="position: relative;">
+                        <div class="dropdown-menu" id="imort-link" style="position: relative;">
                           <!-- Dropdown menu links -->
                           <a href="{{ url('public/build/assets/sample_file_product.xlsx') }}" style="width:100%"
                      class="btn btn-secondary btn-full">Download Sample File</a>
@@ -302,8 +302,8 @@ $('#basic-datatable2').dataTable({
    });
 
    $(document).ready(function(){
-  $(".dropdown-toggle").click(function(){
-    $(".dropdown-menu").toggle();
+  $("#import").click(function(){
+    $("#imort-link").toggle();
   });
 });
 </script>

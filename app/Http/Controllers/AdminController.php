@@ -673,8 +673,9 @@ public function customer_member_delete(Request $request, $id)
         $isp      = ISP::get();
         $customer = Customer::get();
         $agent = Agent::get();
+        $branch = Branch::get();
 
-        return view('admin.nms.add',['data'=>$data, 'member'=>$member, 'isp'=>$isp, 'customer'=>$customer, 'agent'=>$agent]);
+        return view('admin.nms.add',['data'=>$data, 'branch'=>$branch, 'member'=>$member, 'isp'=>$isp, 'customer'=>$customer, 'agent'=>$agent]);
     }
 
     public function ajaxUser_isp($id){

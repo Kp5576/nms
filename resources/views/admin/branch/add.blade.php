@@ -213,6 +213,18 @@
            });
        });
    });
+
+   $("#select_customer").append($("#sortbyco option:gt(0)").sort(function (a, b) {
+    return a.text == b.text ? 0 : a.text < b.text ? -1 : 1;
+}));
+
+$("#select_agent").append($("#sortbyco option:gt(0)").sort(function (a, b) {
+    return a.text == b.text ? 0 : a.text < b.text ? -1 : 1;
+}));
+
+$("#select_isp").append($("#sortbyco option:gt(0)").sort(function (a, b) {
+    return a.text == b.text ? 0 : a.text < b.text ? -1 : 1;
+}));
 </script>
 <!-- Handle Counter js -->
 @vite('resources/assets/js/handlecounter.js')

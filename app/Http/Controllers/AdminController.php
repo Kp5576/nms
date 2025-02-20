@@ -710,7 +710,7 @@ public function customer_member_delete(Request $request, $id)
     }
 
     public function ajaxUser_branch_code($id){
-        $barnch_name = NMS::where('branch_name',$id)->first()->barnch_name;
+        $branch_name = NMS::where('branch_name',$id)->first()->barnch_name;
         echo json_encode(array("branch_name"=>$branch_name ));
 
     }
@@ -757,9 +757,7 @@ public function customer_member_delete(Request $request, $id)
         }else{
             $data['mail_alert'] = 0;
         }
-        if(!empty($request->isp_members_ids)){
-            $data["isp_members_ids"] = implode(",", $request->isp_members_ids);
-        }
+
         $result = NMS::where('branch_name', $request->branch_code)->update($data);
         Alert::success('Success', 'Record inserted!');
         return redirect()->back();
@@ -827,9 +825,7 @@ public function customer_member_delete(Request $request, $id)
             $data['mail_alert'] = 0;
         }
 
-        if(!empty($request->isp_members_ids)){
-            $data["isp_members_ids"] = implode(",", $request->isp_members_ids);
-        }
+
 
         $result = NMS::where('branch_name', $request->barnch_code)->update($data);
         Alert::success('Success', 'Record updated!');

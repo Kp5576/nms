@@ -713,7 +713,7 @@ public function customer_member_delete(Request $request, $id)
         $data = $request->validate([
             'member_id' => 'required',
 
-            'unique_id' => Str::random(8),
+
             'branch' => '',
 
         ]);

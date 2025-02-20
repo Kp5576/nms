@@ -711,17 +711,7 @@ public function customer_member_delete(Request $request, $id)
     public function nms_create(Request $request){
         $data = $request->validate([
             'member_id' => 'required',
-            'isp_id' => 'required',
-            'customer_id' => 'required',
-            'isp_members_ids' => '',
-            'isp_members_names' => '',
-            'agent_members_ids' => '',
-            'agent_members_names' => '',
-            'customer_members_ids' => '',
-            'customer_members_names' => '',
-            'agent_id' => 'required',
-            'ip_address' => 'required',
-            'port'        => '',
+
             'unique_id' => Str::random(8),
             'branch' => '',
 
@@ -792,17 +782,7 @@ public function customer_member_delete(Request $request, $id)
     public function nms_update(Request $request){
         $data = $request->validate([
             'member_id' => 'required',
-            'isp_id' => 'required',
-            'customer_id' => 'required',
-            'agent_id' => 'required',
-            'ip_address' => 'required',
-            'port' => '',
-            'isp_members_ids' => '',
-            'isp_members_names' => '',
-            'agent_members_ids' => '',
-            'agent_members_names' => '',
-            'customer_members_ids' => '',
-            'customer_members_names' => '',
+
             'branch' => '',
         ]);
 

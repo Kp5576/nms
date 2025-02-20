@@ -55,8 +55,8 @@
                    </select>
                 </div>
              </div>
-             <hr/>
-               <div class="form-group">
+            <hr/>
+              <!--  <div class="form-group">
                   <div class=" row mb-2">
                      <label class="col-md-3 form-label" for="">ISP</label>
                      <div class="col-md-6">
@@ -73,7 +73,7 @@
                   <div class=" row mb-2">
                      <label class="col-md-3 form-label" for="">ISP Members Name</label>
                      <div class="col-md-6">
-                        <!-- <input type="text" readonly name="isp_members_names" id="isp_members_names" class="form-control"/> -->
+                        <!-- <input type="text" readonly name="isp_members_names" id="isp_members_names" class="form-control"/>
                         <input type="hidden" name="isp_members_names" value=""/>
 
                          <select class="form-control select2" id="isp_members_ids" name="isp_members_ids[]" multiple="true">
@@ -137,7 +137,7 @@
                     </div>
                   </div>
                </div>
-               <hr/>
+               <hr/> -->
                <div class="form-group">
                   <div class=" row mb-2">
                      <label class="col-md-3 form-label" for="">WhatsApp Message</label>

@@ -58,7 +58,7 @@
                 </div>
              </div>
              <hr/>
-               <div class="form-group">
+              <!-- <div class="form-group">
                   <div class=" row mb-2">
                      <label class="col-md-3 form-label" for="">ISP</label>
                      <div class="col-md-6">
@@ -76,7 +76,7 @@
                      <label class="col-md-3 form-label" for="">ISP Members Names</label>
                      <div class="col-md-6">
                         <input type="hidden" name="isp_members_names" value=""/>
-                        <!-- <input type="text" name="isp_members_names" id="isp_member_names" value="{{ $nms->isp_members_names }}" class="form-control"/> -->
+                        <!-- <input type="text" name="isp_members_names" id="isp_member_names" value="{{ $nms->isp_members_names }}" class="form-control"/>
                          <select class="form-control select2" id="isp_members_ids" name="isp_members_ids[]" multiple="true">
                          </select>
                      </div>
@@ -140,7 +140,7 @@
                     </div>
                   </div>
                </div>
-               <hr/>
+               <hr/> -->
                <div class="form-group">
                   <div class=" row mb-2">
                      <label class="col-md-3 form-label" for="">WhatsApp Message</label>

@@ -42,7 +42,7 @@
                 </div>
                 <div class="form-group">
                     <label>IP</label>
-                    <input type="text" name="ip" class="form-control" placeholder="I.P." required/>
+                    <input type="text" name="ip_address" class="form-control" placeholder="I.P." required/>
                 </div>
                 <div class="form-group">
                     <label>Port</label>

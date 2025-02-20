@@ -45,7 +45,7 @@
                 </div>
                 <div class="form-group">
                     <label>IP</label>
-                    <input type="text" name="ip" value="{{$nms->ip}}" class="form-control" placeholder="I.P." required/>
+                    <input type="text" name="ip_address" value="{{$nms->ip}}" class="form-control" placeholder="I.P." required/>
                 </div>
                 <div class="form-group">
                     <label>Port</label>

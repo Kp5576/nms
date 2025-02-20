@@ -163,7 +163,7 @@
                      <input type="hidden" name="branch_code"  value="">
                      <input type="hidden" name="record_id" value="{{ $nms->id }}"/>
 
-                     <button type="submit" name="submit" class="btn btn-success" >Submit</button>
+                     <button type="submit"  class="btn btn-success" >Submit</button>
                   </div>
                </div>
             </div>

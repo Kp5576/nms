@@ -299,6 +299,9 @@ class AdminController extends Controller {
         $code2 = rand(0,10);
         $code = $code1 + $code2;
         $data['branch_code'] = $code+1;
+        if(!empty($request->isp_members_ids)){
+            $data["isp_members_ids"] = implode(",", $request->isp_members_ids);
+        }
         $result = NMS::create($data);
 
         Alert::success('Success', 'Record inserted!');

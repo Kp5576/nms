@@ -47,7 +47,7 @@
                <div class=" row mb-2">
                 <label class="col-md-3 form-label" for="">Branch</label>
                 <div class="col-md-6">
-                   <select name="branch" id="branch_code" required class="form-control">
+                   <select name="branch" id="branch" required class="form-control">
                       <option value="">Select Option</option>
 
                       @foreach($datas as $value)
@@ -281,7 +281,7 @@
    });
 
    $(document).ready(function(){
-       $("#branch_code").change(function(){
+       $("#branch").change(function(){
            $.ajax({
                url: '/admin/ajax_user/branch_code/'+$(this).val(),
                type:'get',

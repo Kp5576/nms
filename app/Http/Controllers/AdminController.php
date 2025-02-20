@@ -287,23 +287,7 @@ class AdminController extends Controller {
     }
 
     public function create_branch(Request $request){
-        $agent_list = $request->validate([
-            'branch_name' => 'required',
-            'isp_id' => 'required',
-            'customer_id' => 'required',
-            'operator_id' => '',
-            'isp_members_ids' => '',
-            'isp_members_names' => '',
-            'agent_members_ids' => '',
-            'agent_members_names' => '',
-            'customer_members_ids' => '',
-            'customer_members_names' => '',
-            'agent_id' => 'required',
-            'ip_address' => 'required',
-            'port'        => '',
-
-
-        ]);
+        $data = $request->all();
 
         // if($code = DB::table('branch_master')->orderBy('id', 'DESC')->first()->id){
         //     $code;
@@ -314,8 +298,8 @@ class AdminController extends Controller {
         $code1 = rand(0,100);
         $code2 = rand(0,10);
         $code = $code1 + $code2;
-        $agent_list['branch_code'] = $code+1;
-        $result = NMS::create($agent_list);
+        $data['branch_code'] = $code+1;
+        $result = NMS::create($data);
 
         Alert::success('Success', 'Record inserted!');
 

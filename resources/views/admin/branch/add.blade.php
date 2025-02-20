@@ -80,7 +80,7 @@
                   <div class=" row mb-2">
                      <label class="col-md-3 form-label" for="">OPERATOR</label>
                      <div class="col-md-6">
-                        <select name="customer_id" required class="form-control" id="select_operator" >
+                        <select name="operator_id" required class="form-control" id="select_operator" >
                             <option value="">Select Option</option>
                            @foreach($operator as $result)
                            <option  value="{{$result->id}}">{{$result->name}}</option>

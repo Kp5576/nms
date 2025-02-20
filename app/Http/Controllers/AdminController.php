@@ -663,6 +663,7 @@ public function customer_member_delete(Request $request, $id)
         $customer = Customer::get();
         $agent = Agent::get();
         $branch = Branch::get();
+        dd($data);
 
         return view('admin.nms.add',['data'=>$data, 'branch'=>$branch, 'member'=>$member, 'isp'=>$isp, 'customer'=>$customer, 'agent'=>$agent]);
     }

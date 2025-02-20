@@ -773,7 +773,7 @@ public function customer_member_delete(Request $request, $id)
     }
 
     public function edit_nms($id){
-        $data     = NMS::get();
+        $datas     = NMS::get();
         $member = User::whereIn('role_id',[2])->get();
         $isp      = ISP::get();
         $customer = Customer::get();
@@ -781,7 +781,7 @@ public function customer_member_delete(Request $request, $id)
         $branch = Branch::get();
 
         $nms =  NMS::where('id', $id)->first();
-        return view('admin.nms.edit',['data'=>$data, 'branch'=>$branch, 'member'=>$member, 'isp'=>$isp, 'customer'=>$customer, 'agent'=>$agent, 'nms' => $nms]);
+        return view('admin.nms.edit',['datas'=>$datas, 'branch'=>$branch, 'member'=>$member, 'isp'=>$isp, 'customer'=>$customer, 'agent'=>$agent, 'nms' => $nms]);
     }
 
     public function nms_update(Request $request){

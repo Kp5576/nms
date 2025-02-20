@@ -269,8 +269,8 @@ class AdminController extends Controller {
      public function list_branch(Request $request) {
 
         $agent_list = NMS::paginate(10);
-        
-        return view('admin.branch.list',['agent_list'=>$agent_list, 'isp'=>$isp, 'customer'=>$customer, 'agent'=>$agent]);
+
+        return view('admin.branch.list',['agent_list'=>$agent_list]);
     }
 
     public function branch_add(){

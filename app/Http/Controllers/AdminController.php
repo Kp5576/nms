@@ -320,11 +320,12 @@ class AdminController extends Controller {
     public function edit_branch($id){
 
         $isp      = ISP::where('operator',0)->get();
-        $customer = ISP::where('operator',1)->get();
+        $operator = ISP::where('operator',1)->get();
         $agent = Agent::get();
+        $customer = Customer::get();
 
         $nms = DB::table('branch_master')->where('id', $id)->first();
-        return view('admin.branch.edit',[ 'isp'=>$isp, 'customer'=>$customer, 'agent'=>$agent, 'nms' => $nms]);
+        return view('admin.branch.edit',[ 'isp'=>$isp, 'customer'=>$customer, 'agent'=>$agent, 'nms' => $nms, 'operator'=>$operator]);
     }
 
     public function update_branch(Request $request)

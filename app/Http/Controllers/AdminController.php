@@ -293,6 +293,7 @@ class AdminController extends Controller {
         // else{
         //     $code = 1;
         // }
+        unset($data['_token']);
         $code1 = rand(0,100);
         $code2 = rand(0,10);
         $code = $code1 + $code2;

@@ -89,12 +89,12 @@
                                             <td class="text-wrap fw-semibold" id="name-{{$record->id}}">{{ $record->branch_code }}</td>
                                             <td class="text-wrap fw-semibold" id="name-{{$record->id}}">{{ $record->branch_name }}</td>
                                             <td class="text-wrap" id="email-{{$record->id}}">{{ $record->address }}</td>
-                                            <td class="font-weight-bold" id="address-{{$record->id}}">{{$record->ip}}</td>
+                                            <td class="font-weight-bold" id="address-{{$record->id}}">{{$record->ip_address}}</td>
                                             <td class="font-weight-bold" id="address-{{$record->id}}">{{$record->port}}</td>
-                                            <td class="text-wrap fw-semibold" id="name-{{$record->id}}">{{ $record->operator_name }}</td>
-                                            <td class="text-wrap fw-semibold" id="name-{{$record->id}}">{{ $record->isp_name }}</td>
-                                            <td class="text-wrap fw-semibold" id="name-{{$record->id}}">{{ $record->agent_name }}</td>
-                                            <td class="text-wrap fw-semibold" id="name-{{$record->id}}">{{ $record->customer_name }}</td>
+                                            <td class="text-wrap fw-semibold" id="name-{{$record->id}}">{{ $record->operator->name }}</td>
+                                            <td class="text-wrap fw-semibold" id="name-{{$record->id}}">{{ $record->isp->name }}</td>
+                                            <td class="text-wrap fw-semibold" id="name-{{$record->id}}">{{ $record->agent->name }}</td>
+                                            <td class="text-wrap fw-semibold" id="name-{{$record->id}}">{{ $record->customer->name }}</td>
 
 
                                             <td>

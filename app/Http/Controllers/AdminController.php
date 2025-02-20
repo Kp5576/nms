@@ -268,10 +268,8 @@ class AdminController extends Controller {
      // ----------------------------------branch Starting----------------------------------------
      public function list_branch(Request $request) {
 
-        $agent_list = DB::table('branch_master')->paginate(10);
-        $isp      = ISP::get();
-        $customer = Customer::get();
-        $agent = Agent::get();
+        $agent_list = NMS::paginate(10);
+        
         return view('admin.branch.list',['agent_list'=>$agent_list, 'isp'=>$isp, 'customer'=>$customer, 'agent'=>$agent]);
     }
 
@@ -316,24 +314,13 @@ class AdminController extends Controller {
         $agent = Agent::get();
         $customer = Customer::get();
 
-        $nms = DB::table('branch_master')->where('id', $id)->first();
+        $nms = NMS::where('id', $id)->first();
         return view('admin.branch.edit',[ 'isp'=>$isp, 'customer'=>$customer, 'agent'=>$agent, 'nms' => $nms, 'operator'=>$operator]);
     }
 
     public function update_branch(Request $request)
     {
-        $agent_list = $request->validate([
-            'branch_name' => 'required',
-            'address' => 'required',
-            'ip' => 'required',
-            'port' => '',
-             'operator_name' => '',
-             'isp_name' => '',
-             'agent_name' => '',
-             'customer_name' => '',
-             'branch_code' => ''
-
-        ]);
+        $data = $request->all();
 
         // if($code = DB::table('branch_master')->orderBy('id', 'DESC')->first()->id){
         //     $code;
@@ -344,8 +331,12 @@ class AdminController extends Controller {
         $code1 = rand(0,100);
         $code2 = rand(0,10);
         $code = $code1 + $code2;
-        $agent_list['branch_code'] = $code+1;
-        DB::table('branch_master')->where('id', $request->record_id)->update($agent_list);
+        $data['branch_code'] = $code+1;
+        if(!empty($request->isp_members_ids)){
+            $data["isp_members_ids"] = implode(",", $request->isp_members_ids);
+        }
+        $result = NMS::where('id', $request->record_id)->update($data);
+
          Alert::success('Success', 'Record updated!');
         return redirect('/admin/branch');
     }

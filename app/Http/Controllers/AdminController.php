@@ -709,12 +709,18 @@ public function customer_member_delete(Request $request, $id)
           echo json_encode(array("operator_member_names"=>$member_names , "operator_name"=>$isp_name ));
     }
 
+    public function ajaxUser_branch_code($id){
+        $barnch_name = NMS::where('branch_name',$id)->first()->barnch_name;
+        echo json_encode(array("branch_name"=>$branch_name ));
+
+    }
+
     public function nms_create(Request $request){
         $data = $request->validate([
             'member_id' => 'required',
 
-
-            'branch' => '',
+            'unique_id' => Str::random(8),
+            'branch' => 'required',
 
         ]);
 
@@ -754,7 +760,7 @@ public function customer_member_delete(Request $request, $id)
         if(!empty($request->isp_members_ids)){
             $data["isp_members_ids"] = implode(",", $request->isp_members_ids);
         }
-        $result = NMS::create($data);
+        $result = NMS::where('branch_name', $request->branch_code)->update($data);
         Alert::success('Success', 'Record inserted!');
         return redirect()->back();
     }
@@ -776,7 +782,7 @@ public function customer_member_delete(Request $request, $id)
         $agent = Agent::get();
         $branch = Branch::get();
 
-        $nms =  NMS::where('id', $id)->first();
+        $nms =  NMS::where('id', $request->branch_code)->first();
         return view('admin.nms.edit',['data'=>$data, 'branch'=>$branch, 'member'=>$member, 'isp'=>$isp, 'customer'=>$customer, 'agent'=>$agent, 'nms' => $nms]);
     }
 
@@ -784,7 +790,7 @@ public function customer_member_delete(Request $request, $id)
         $data = $request->validate([
             'member_id' => 'required',
 
-            'branch' => '',
+            'branch' => 'required',
         ]);
 
         if($request->hindi_english){
@@ -825,7 +831,7 @@ public function customer_member_delete(Request $request, $id)
             $data["isp_members_ids"] = implode(",", $request->isp_members_ids);
         }
 
-        $result = NMS::where('id', $request->record_id)->update($data);
+        $result = NMS::where('branch_name', $request->barnch_code)->update($data);
         Alert::success('Success', 'Record updated!');
         return redirect('admin/nms');
     }

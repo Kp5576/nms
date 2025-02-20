@@ -49,7 +49,7 @@
                <div class=" row mb-2">
                 <label class="col-md-3 form-label" for="">Branch</label>
                 <div class="col-md-6">
-                   <select name="branch" required class="form-control">
+                   <select name="branch" id="branch_code" required class="form-control">
                       <option value="">Select Option</option>
                       @foreach($data as $value)
                           <option  value="{{$value->branch_name}}">{{$value->branch_name}} </option>
@@ -207,7 +207,9 @@
                      <!-- <input type="hidden" name="isp_members_ids" id="isp_members_ids" value="{{$nms->isp_members_ids}}"> -->
                      <input type="hidden" name="agent_members_ids" id="agent_members_ids" value="{{$nms->agent_members_ids}}">
                      <input type="hidden" name="customer_members_ids" id="customer_members_ids" value="{{$nms->customer_members_ids}}">
-                     <input type="hidden" name="record_id" value="{{ $nms->id }}"/>
+                    <!-- <input type="hidden" name="record_id" value="{{ $nms->id }}"/> -->
+                    <input type="hidden" name="branch_code" id="branch_code">
+
 
                      <button type="submit" name="submit" class="btn btn-success" >Submit</button>
                   </div>
@@ -299,6 +301,21 @@
 
                    $("#customer_members_names").val(result.customer_names);
                    $("#customer_members_ids").val(result.customer_ids);
+               }
+           });
+       });
+   });
+   $(document).ready(function(){
+       $("#branch_code").change(function(){
+           $.ajax({
+               url: '/admin/ajax_user/branch_code/'+$(this).val(),
+               type:'get',
+               dataType:'JSON',
+               success:function(result){
+
+
+                   $("#branch_code").val(result.branch_name);
+                  // $("#agent_members_ids").val(result.agent_ids);
                }
            });
        });

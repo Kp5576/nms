@@ -127,6 +127,7 @@ Route::prefix('admin')->middleware('auth','admin')->group(function () {
     Route::get('/ajax_user/agent/{id}', [AdminController::class, 'ajaxUser_agent'])->name("admin.nms.ajax_agent");
     Route::get('/ajax_user/customer/{id}', [AdminController::class, 'ajaxUser_customer'])->name("admin.nms.ajax_customer");
     Route::get('/ajax_user/operator/{id}', [AdminController::class, 'ajaxUser_operator'])->name("admin.barnch.ajax_operator");
+    Route::get('/ajax_user/branch_code/{id}', [AdminController::class, 'ajaxUser_branch_code'])->name("admin.barnch.ajax_branch_code");
 
 
 

@@ -49,6 +49,7 @@
                 <div class="col-md-6">
                    <select name="branch" required class="form-control">
                       <option value="">Select Option</option>
+                      <?php dd($data);?>
                       @foreach($data as $value)
                           <option  value="{{$value->branch_name}}">{{$value->branch_name}} </option>
                       @endforeach

@@ -827,7 +827,7 @@ public function customer_member_delete(Request $request, $id)
 
 
 
-        $result = NMS::where('branch_name', $request->barnch)->update($data);
+        $result = NMS::where('branch_name', $request->record_id)->update($data);
         Alert::success('Success', 'Record updated!');
         return redirect('admin/nms');
     }

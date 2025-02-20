@@ -758,7 +758,7 @@ public function customer_member_delete(Request $request, $id)
             $data['mail_alert'] = 0;
         }
 
-        $result = NMS::where('branch_name', $request->branch_code)->update($data);
+        $result = NMS::where('branch_name', $request->branch)->update($data);
         Alert::success('Success', 'Record inserted!');
         return redirect()->back();
     }
@@ -780,7 +780,7 @@ public function customer_member_delete(Request $request, $id)
         $agent = Agent::get();
         $branch = Branch::get();
 
-        $nms =  NMS::where('id', $request->branch_code)->first();
+        $nms =  NMS::where('id', $request->record_id)->first();
         return view('admin.nms.edit',['data'=>$data, 'branch'=>$branch, 'member'=>$member, 'isp'=>$isp, 'customer'=>$customer, 'agent'=>$agent, 'nms' => $nms]);
     }
 
@@ -827,7 +827,7 @@ public function customer_member_delete(Request $request, $id)
 
 
 
-        $result = NMS::where('branch_name', $request->barnch_code)->update($data);
+        $result = NMS::where('branch_name', $request->barnch)->update($data);
         Alert::success('Success', 'Record updated!');
         return redirect('admin/nms');
     }

@@ -207,7 +207,7 @@
                      <!-- <input type="hidden" name="isp_members_ids" id="isp_members_ids" value="{{$nms->isp_members_ids}}"> -->
                      <input type="hidden" name="agent_members_ids" id="agent_members_ids" value="{{$nms->agent_members_ids}}">
                      <input type="hidden" name="customer_members_ids" id="customer_members_ids" value="{{$nms->customer_members_ids}}">
-                    <!-- <input type="hidden" name="record_id" value="{{ $nms->id }}"/> -->
+                     <input type="hidden" name="record_id" value="{{ $nms->id }}"/>
                     <input type="hidden" name="branch_code" id="branch_code">
 
 

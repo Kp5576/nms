@@ -657,7 +657,7 @@ public function customer_member_delete(Request $request, $id)
 
 
     public function nms_add(){
-        $data     = NMS::get();
+        $datas     = NMS::get();
         $member = User::whereIn('role_id',[2])->get();
         $isp      = ISP::get();
         $customer = Customer::get();
@@ -665,7 +665,7 @@ public function customer_member_delete(Request $request, $id)
         $branch = Branch::get();
         //dd($data);
 
-        return view('admin.nms.add',['data'=>$data, 'branch'=>$branch, 'member'=>$member, 'isp'=>$isp, 'customer'=>$customer, 'agent'=>$agent]);
+        return view('admin.nms.add',['datas'=>$datas, 'branch'=>$branch, 'member'=>$member, 'isp'=>$isp, 'customer'=>$customer, 'agent'=>$agent]);
     }
 
     public function ajaxUser_isp($id){

@@ -292,10 +292,16 @@ class AdminController extends Controller {
             'isp_id' => 'required',
             'customer_id' => 'required',
             'operator_id' => '',
+            'isp_members_ids' => '',
+            'isp_members_names' => '',
+            'agent_members_ids' => '',
+            'agent_members_names' => '',
+            'customer_members_ids' => '',
+            'customer_members_names' => '',
             'agent_id' => 'required',
             'ip_address' => 'required',
             'port'        => '',
-            'unique_id' => Str::random(8),
+
 
         ]);
 

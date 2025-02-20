@@ -780,7 +780,7 @@ public function customer_member_delete(Request $request, $id)
         $agent = Agent::get();
         $branch = Branch::get();
 
-        $nms =  NMS::where('id', $request->record_id)->first();
+        $nms =  NMS::where('id', $id)->first();
         return view('admin.nms.edit',['data'=>$data, 'branch'=>$branch, 'member'=>$member, 'isp'=>$isp, 'customer'=>$customer, 'agent'=>$agent, 'nms' => $nms]);
     }
 

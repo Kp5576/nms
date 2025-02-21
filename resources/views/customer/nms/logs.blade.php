@@ -105,10 +105,10 @@ use App\Http\Controllers\AdminController;
               @csrf
              <div class="row">
                <div class="col-md-3">
-               <input class="form-control" name="start_date" value="" placeholder="MM/DD/YYYY" type="date">
+               <input class="form-control" name="start_date" value="{{ $data['start_date'] }}" placeholder="MM/DD/YYYY" type="date">
               </div>
               <div class="col-md-3">
-               <input class="form-control" name="end_date" value="" placeholder="MM/DD/YYYY" type="date">
+               <input class="form-control" name="end_date" value="{{ $data['end_date'] }}" placeholder="MM/DD/YYYY" type="date">
               </div>
               <div class="col-md-3">
                 <input type="submit" name="submit" value="Submit" class="btn btn-success"/>
@@ -137,7 +137,7 @@ use App\Http\Controllers\AdminController;
            <th>Date</th>
               </tr>
               </thead>
-                @foreach($data->last_five_records as $record)
+                @foreach($data['last_five_records'] as $record)
                <tr>
                  <td>@if($record->status == 1)
                    <span class="btn btn-sm btn-success">Active</span>
@@ -169,7 +169,7 @@ use App\Http\Controllers\AdminController;
            <th>Length</th>
               </tr>
               </thead>
-                @foreach($data->incident_records as $record)
+                @foreach($data['incident_records'] as $record)
                <tr>
                   <td>
                  {{ date("d M Y", strtotime($record["created_at"])) }}

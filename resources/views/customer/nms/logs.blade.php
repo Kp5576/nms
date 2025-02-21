@@ -190,9 +190,9 @@ use App\Http\Controllers\AdminController;
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
          <script>
-            var xValues = <?php echo $xValues; ?>;
-            var yValues = <?php echo $yValues; ?>;
-            var barColors =  <?php echo $barColors; ?>;
+            var xValues = <?php echo $data['xValues']; ?>;
+            var yValues = <?php echo $data['yValues']; ?>;
+            var barColors =  <?php echo $data['barColors']; ?>;
 
             new Chart("myChart", {
               type: "bar",

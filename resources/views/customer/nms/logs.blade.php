@@ -105,10 +105,10 @@ use App\Http\Controllers\AdminController;
               @csrf
              <div class="row">
                <div class="col-md-3">
-               <input class="form-control" name="start_date" value="{{ $data->start_date }}" placeholder="MM/DD/YYYY" type="date">
+               <input class="form-control" name="start_date" value="" placeholder="MM/DD/YYYY" type="date">
               </div>
               <div class="col-md-3">
-               <input class="form-control" name="end_date" value="{{ $data->end_date }}" placeholder="MM/DD/YYYY" type="date">
+               <input class="form-control" name="end_date" value="" placeholder="MM/DD/YYYY" type="date">
               </div>
               <div class="col-md-3">
                 <input type="submit" name="submit" value="Submit" class="btn btn-success"/>

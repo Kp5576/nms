@@ -43,12 +43,12 @@ class CustomerController extends Controller {
         'recent_up_links'=>$recent_up_links,
         ]);
     }
-    
+
     public function list_nms(){
         $nms_list = NMS::where('member_id', auth()->user()->id)->paginate(10);
         return view('customer.nms.list',['nms_list'=>$nms_list]);
     }
-    
+
     public function nms_view($id){
         $nms =  NMS::where('id', $id)->first();
         return view('customer.nms.view',['nms' => $nms]);
@@ -56,7 +56,7 @@ class CustomerController extends Controller {
     public function nms_logs(Request $request, $id){
         $end_date = date("Y-m-d H:i:s");
         $start_date = date("Y-m-d H:i:s", strtotime('-12 hours'));
-       
+
         $data['start_date'] ='';
         $data['end_date'] ='';
         if(isset($request->start_date) && isset($request->end_date) && !empty($request->start_date) && !empty($request->end_date)){
@@ -67,14 +67,14 @@ class CustomerController extends Controller {
         }
         $nms = NMS::where('id',$id)->first();
         $results = ServerTime::where('nms_id', $id)->whereBetween('date', [$start_date, $end_date])->get()->toArray();
-       
+
         $xValues = [];
         $yValues = [];
         $barColors = [];
         foreach($results as $row)
         {
             $xValues[] = $row["date"];
-           
+
             if($row["status"] == 0)
             {
                 $barColors[] = "red";
@@ -88,20 +88,20 @@ class CustomerController extends Controller {
         $data['xValues'] = json_encode($xValues);
         $data['yValues'] = json_encode($yValues);
         $data['barColors'] = json_encode($barColors);
-      
+
         $nms->last_check_datetime = $this->get_elapsed_time($nms->last_check_datetime);
         $nms->main_ok_datetime = $this->get_elapsed_time($nms->main_ok_datetime);
         $data['nms'] = $nms;
 
         $data['last_five_records'] = ServerTime::where('nms_id',$id)->orderBy('id', 'desc')->take(5)->get();
         $data['incident_records'] = Incident::where('nms_id',$id)->orderBy('id', 'desc')->take(10)->get();
-     
-        return view('customer.nms.logs',$data);
+
+        return view('customer.nms.logs',['data' => $data, 'nms'=>$nms]);
     }
 
     public function edit_member($id){
-       
-        
+
+
         $user =  User::where('id', $id)->first();
         return view('customer.member.edit',['user' => $user]);
     }
@@ -185,21 +185,21 @@ class CustomerController extends Controller {
 
     public function nms_add(){
         $data     = NMS::get();
-     
+
         $isp      = ISP::get();
         $customer = Customer::get();
         $agent = Agent::get();
 
         return view('customer.nms.add',['data'=>$data, 'isp'=>$isp, 'customer'=>$customer, 'agent'=>$agent]);
     }
-    
+
 
     public function nms_create(Request $request){
         $data = $request->validate([
             'ip_address' => 'required',
             'port'        => '',
             'unique_id' => Str::random(8),
-           
+
         ]);
 
 

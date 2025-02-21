@@ -32,18 +32,18 @@ class HomeController extends Controller
     function  __construct(){
         date_default_timezone_set('Asia/Kolkata');
         }
-    
+
     public function cron_run()
     {
-    
+
         $records = NMS::get();
-       
+
         foreach ($records as $row)
         {
             $last_record = DB::table("servers_uptime")->where("nms_id", $row->id)
                 ->orderBy("id", "desc")
                 ->first();
-            
+
             $last_record_status = 0;
             if (isset($last_record->status))
             {
@@ -111,12 +111,12 @@ class HomeController extends Controller
                 $res['is_ok'] = $status;
                 NMS::where('id', $row->id)->update($res);
             }
-  
+
             $data = ["nms_id" => $row->id, "date" => date("Y-m-d H:i:s") , "status" => $status, "latency" => $this->rtime ];
-       
+
             if ($last_record_status != $status)
             {
-               
+
                 if ($row->hindi_english == 1)
                 {
                     // send hindi msg
@@ -143,7 +143,7 @@ class HomeController extends Controller
                 }
                 else
                 {
-                   
+
                     //send english msg
                     if ($row->customer_alert == 1)
                     {
@@ -241,7 +241,7 @@ class HomeController extends Controller
         $isp = ISP::where("id", $row->isp_id)->first();
         $customer = Customer::where("id", $row->customer_id)->first();
         $agent = Agent::where("id", $row->agent_id)->first();
-       
+
         $isp_members_data = ISPMember::whereIn('id',json_decode('['.$row->isp_members_ids.']'))->where('alert',1);
         $isp_members_mobiles_array = $isp_members_data->pluck('mobile')->toArray();
         $isp_members_operator_array = $isp_members_data->pluck('operator')->toArray();
@@ -249,7 +249,7 @@ class HomeController extends Controller
 
         $isp_members_mobiles = $isp->mobile;
         $isp_members_emails = $isp->email;
-        
+
         // $isp_members_mobiles = implode(',',$isp_members_mobiles_array);
         // $isp_members_emails = implode(',',$isp_members_emails_array);
 
@@ -304,7 +304,7 @@ class HomeController extends Controller
             }
             elseif ($type == "isp_member")
             {
-              
+
                 $customer_name =  implode(',',$isp_members_operator_array);
 
                 $name = $agent->name;
@@ -347,7 +347,7 @@ class HomeController extends Controller
                     {
                         $this->sendMsg($country_code, $member->whatsapp_auth_key, $member->whatsapp_app_key, $template_name, $mobile, $member->company, $postdata);
                     }
-                
+
                     if($member->sms_whatsapp == "whatsapp" && $member->whatsapp_type == "whatsapp_qr")
                     {
                         $this->sendMsgQr($country_code, $member->whatsapp_auth_key, $member->whatsapp_app_key, $template_name, $mobile, $member->company, $postdata);
@@ -391,7 +391,7 @@ class HomeController extends Controller
             }
             elseif ($type == "isp_member")
             {
-              
+
                 $customer_name =  implode(',',$isp_members_operator_array);
 
                 $name = $agent->name;
@@ -434,10 +434,10 @@ class HomeController extends Controller
                     {
                         $this->sendMsg($country_code, $member->whatsapp_auth_key, $member->whatsapp_app_key, $template_name, $mobile, $member->company, $postdata);
                     }
-                
+
                     if($member->sms_whatsapp == "whatsapp" && $member->whatsapp_type == "whatsapp_qr")
                     {
-                    
+
                         $this->sendMsgQr($country_code, $member->whatsapp_auth_key, $member->whatsapp_app_key, $template_name, $mobile, $member->company, $postdata);
                     }
                 }
@@ -503,7 +503,7 @@ class HomeController extends Controller
         $i = 0;
         foreach($arrys as $mobile){
         $curl = curl_init();
-        
+
         $customer = "";
         if(isset($customer_name[$i]))
         {
@@ -643,7 +643,7 @@ class HomeController extends Controller
                 $latency = round($latency * 1000, 4);
             }
             echo  $latency;
-       
+
 
     }
 
@@ -723,25 +723,25 @@ class HomeController extends Controller
 
     public function forget_action(Request $request)
     {
-      
+
         $request->validate([
             'email' => 'required|email|exists:users',
          ]);
          $token = Str::random(64);
-    
+
          DB::table('password_reset_tokens')->insert([
             'email' => $request->email,
             'token' => $token,
             'created_at'=> Carbon::now()
          ]);
-    
+
          Mail::send('emails/mailforget',['token' => $token], function($message) use ($request){
             $message->to($request->email);
             $message->subject('Reset Password');
          });
-         return redirect()->back()->with('message', 'we have send reset message to your email'); 
+         return redirect()->back()->with('message', 'we have send reset message to your email');
         }
-        
+
         public function showresetpasswordform($token){
             return view('new_password', ['token'=> $token]);
         }

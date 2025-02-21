@@ -199,7 +199,7 @@ class AdminController extends Controller {
             'email' => 'required',
             'mobile' => 'required',
             'address' => '',
-            'operator' => 1
+            'operator' => ''
         ]);
 
         ISP::where('id', $request->record_id)->update($data);

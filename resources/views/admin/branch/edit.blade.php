@@ -61,7 +61,7 @@
                         <select name="isp_id" required class="form-control" id="select_isp">
                         <option value="">Select Option</option>
                            @foreach($isp as $record)
-                           <option value="{{$record->id}}" {{ $record->id == $nms->id ? 'selected' : ''  }}>{{$record->name}}</option>
+                           <option value="{{$record->id}}" {{ $record->id == $nms->isp_id ? 'selected' : ''  }}>{{$record->name}}</option>
                            @endforeach
                         </select>
                      </div>
@@ -71,8 +71,8 @@
                   <div class=" row mb-2">
                      <label class="col-md-3 form-label" for="">ISP Members Names</label>
                      <div class="col-md-6">
-                        <input type="hidden" name="isp_members_names" value=""/>
-                         <select class="form-control select2" id="isp_members_ids" name="isp_members_ids[]" multiple="true">
+                        <input type="hidden" name="isp_members_names" value="{{ $nms->isp_members_names }}"/>
+                         <select class="form-control select2" id="isp_members_ids" name="isp_members_ids[]" multiple="true" value="{{ $nms->isp_members_names }}">
                          </select>
                      </div>
                   </div>
@@ -85,7 +85,7 @@
                         <select name="operator_id" required class="form-control" id="select_operator">
                         <option value="">Select Option</option>
                            @foreach($operator as $result)
-                           <option  value="{{$result->id}}" {{ $result->id == $nms->id ? 'selected' : ''  }}>{{$result->name}}</option>
+                           <option  value="{{$result->id}}" {{ $result->id == $nms->operator_id ? 'selected' : ''  }}>{{$result->name}}</option>
                            @endforeach
                         </select>
                      </div>
@@ -109,7 +109,7 @@
                         <select name="agent_id" required class="form-control" id="select_agent">
                         <option value="">Select Option</option>
                            @foreach($agent as $result)
-                           <option  value="{{$result->id}}" {{ $result->id == $nms->id ? 'selected' : ''  }}>{{$result->name}}</option>
+                           <option  value="{{$result->id}}" {{ $result->id == $nms->agent_id ? 'selected' : ''  }}>{{$result->name}}</option>
                            @endforeach
                         </select>
                      </div>
@@ -133,7 +133,7 @@
                         <select name="customer_id" required class="form-control" id="select_customer" >
                             <option value="">Select Option</option>
                            @foreach($customer as $result)
-                           <option  value="{{$result->id}}">{{$result->name}},{{$result->branch_name}}</option>
+                           <option  value="{{$result->id}}" {{ $result->id == $nms->customer_id ? 'selected' : ''  }}>{{$result->name}},{{$result->branch_name}}</option>
                            @endforeach
                         </select>
                      </div>

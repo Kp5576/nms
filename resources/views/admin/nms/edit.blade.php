@@ -197,7 +197,7 @@
                    <label class="col-md-3 form-label" for="">Operator Alert</label>
                    <div class="col-md-6">
                       <div class="form-check form-switch">
-                          <input class="form-check-input" name="operator_alert" type="checkbox">
+                          <input class="form-check-input" name="operator_alert" {{ $nms->operator_alert == 1 ? 'checked' : ''  }} type="checkbox">
                       </div>
                    </div>
                 </div>

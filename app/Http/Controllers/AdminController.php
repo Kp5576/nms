@@ -747,6 +747,11 @@ public function customer_member_delete(Request $request, $id)
         }else{
             $data['isp_alert'] = 0;
         }
+        if($request->isp_alert){
+            $data['isp_alert'] = 1;
+        }else{
+            $data['isp_alert'] = 0;
+        }
         if($request->whatsapp_message){
             $data['whatsapp_message'] = 1;
         }else{
@@ -813,6 +818,11 @@ public function customer_member_delete(Request $request, $id)
             $data['isp_alert'] = 1;
         }else{
             $data['isp_alert'] = 0;
+        }
+        if($request->operator_alert){
+            $data['operator_alert'] = 1;
+        }else{
+            $data['operator_alert'] = 0;
         }
         if($request->whatsapp_message){
             $data['whatsapp_message'] = 1;

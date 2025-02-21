@@ -190,6 +190,16 @@
                   </div>
                </div>
                <div class="form-group">
+                <div class=" row mb-2">
+                   <label class="col-md-3 form-label" for="">Operator Alert</label>
+                   <div class="col-md-6">
+                      <div class="form-check form-switch">
+                          <input class="form-check-input" name="operator_alert" type="checkbox">
+                      </div>
+                   </div>
+                </div>
+             </div>
+               <div class="form-group">
                   <div class=" row mb-2">
                      <label class="col-md-3 form-label" for="">Mail Alert</label>
                      <div class="col-md-6">

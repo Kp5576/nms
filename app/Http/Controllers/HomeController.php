@@ -136,6 +136,10 @@ class HomeController extends Controller
                     {
                         $this->sendCommonMsg("agent", $status, $row, "hindi");
                     }
+                    if ($row->operator_alert == 1)
+                    {
+                        $this->sendCommonMsg("isp", $status, $row, "hindi");
+                    }
                 }
                 else
                 {
@@ -156,6 +160,10 @@ class HomeController extends Controller
                     if ($row->agent_alert == 1)
                     {
                         $this->sendCommonMsg("agent", $status, $row, "english");
+                    }
+                    if ($row->operator_alert == 1)
+                    {
+                        $this->sendCommonMsg("isp", $status, $row, "english");
                     }
                 }
             }

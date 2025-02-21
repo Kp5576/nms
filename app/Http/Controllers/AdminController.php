@@ -189,7 +189,7 @@ class AdminController extends Controller {
         ISP::where('id',$id)->delete();
         ISPMember::where('isp_id', $id)->delete();
         Alert::success('Success', 'Record deleted!');
-        return redirect('/admin/isp');
+        return redirect('/admin/operator');
     }
 
     public function update_operator(Request $request)
@@ -204,7 +204,7 @@ class AdminController extends Controller {
 
         ISP::where('id', $request->record_id)->update($data);
          Alert::success('Success', 'Record updated!');
-        return redirect('/admin/isp');
+        return redirect('/admin/operator');
     }
 
 

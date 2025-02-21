@@ -33,7 +33,7 @@ use App\Http\Controllers\AdminController;
                                         <div class="card-body">
                                             <div class="d-flex">
                                                 <div class="text-white">
-                                                    <h2 class="mb-0 number-font">{{$record['ip_address']}}</h2>
+                                                    <h2 class="mb-0 number-font">{{$nms['ip_address']}}</h2>
                                                     <p class="text-white mb-0">IP Address</p>
                                                 </div>
                                                 <div class="ms-auto"> <i class="fa fa-check text-white fs-30 me-2 mt-2"></i> </div>
@@ -105,10 +105,10 @@ use App\Http\Controllers\AdminController;
               @csrf
              <div class="row">
                <div class="col-md-3">
-               <input class="form-control" name="start_date" value="{{ $start_date }}" placeholder="MM/DD/YYYY" type="date">
+               <input class="form-control" name="start_date" value="{{ $data->start_date }}" placeholder="MM/DD/YYYY" type="date">
               </div>
               <div class="col-md-3">
-               <input class="form-control" name="end_date" value="{{ $end_date }}" placeholder="MM/DD/YYYY" type="date">
+               <input class="form-control" name="end_date" value="{{ $data->end_date }}" placeholder="MM/DD/YYYY" type="date">
               </div>
               <div class="col-md-3">
                 <input type="submit" name="submit" value="Submit" class="btn btn-success"/>
@@ -137,7 +137,7 @@ use App\Http\Controllers\AdminController;
            <th>Date</th>
               </tr>
               </thead>
-                @foreach($last_five_records as $record)
+                @foreach($data->last_five_records as $record)
                <tr>
                  <td>@if($record->status == 1)
                    <span class="btn btn-sm btn-success">Active</span>
@@ -169,7 +169,7 @@ use App\Http\Controllers\AdminController;
            <th>Length</th>
               </tr>
               </thead>
-                @foreach($incident_records as $record)
+                @foreach($data->incident_records as $record)
                <tr>
                   <td>
                  {{ date("d M Y", strtotime($record["created_at"])) }}

@@ -62,8 +62,8 @@ class CustomerController extends Controller {
         if(isset($request->start_date) && isset($request->end_date) && !empty($request->start_date) && !empty($request->end_date)){
             $start_date = date("Y-m-d 00:00:00",strtotime($request->start_date));
             $end_date = date("Y-m-d 23:59:59",strtotime($request->end_date));
-            $data['start_date'] = $request->start_date;
-            $data['end_date'] = $request->end_date;
+            $data['start_date'] = $start_date;
+            $data['end_date'] = $end_date;
         }
         $nms = NMS::where('id',$id)->first();
         $results = ServerTime::where('nms_id', $id)->whereBetween('date', [$start_date, $end_date])->get()->toArray();

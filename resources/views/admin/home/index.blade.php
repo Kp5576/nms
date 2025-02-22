@@ -50,9 +50,11 @@
 										<div class="col-lg-6 col-md-6 col-sm-12 col-xl-6">
 											<div class="card">
 												<div class="card-body text-center statistics-info">
-													<div class="counter-icon bg-danger mb-0 box-success-shadow">
-														<a href="{{route('admin.nms.dwonlinks_list')}}"><i class="fe fe-server text-white" style="position: absolute;"></i></a>
+													<a href="{{route('admin.nms.dwonlinks_list')}}">
+                                                    <div class="counter-icon bg-danger mb-0 box-success-shadow">
+														<i class="fe fe-server text-white" style="position: absolute;"></i>
 													</div>
+                                                </a>
 													<h6 class="mt-4 mb-1">Total Down Links</h6>
 													<h2 class="mb-2  number-font">{{$total_down_links}}</h2>
 

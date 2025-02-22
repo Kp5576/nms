@@ -8,7 +8,7 @@
 								<img src="{{asset('build/assets/images/brand/logo.png')}}" class="header-brand-img desktop-logo" alt="logo">
 								<!--<img src="{{asset('build/assets/images/brand/logo-3.png')}}" class="header-brand-img light-logo1"
 									alt="logo"> -->
-                                    <p class="header-brand-img light-logo1 header-brand1" style="font-size:30px;font-weight:bold;">NMS</p>
+                                    <p class="header-brand-img light-logo1 text-center" style="font-size:30px;font-weight:bold;">NMS</p>
 							</a>
 							<!-- LOGO -->
 

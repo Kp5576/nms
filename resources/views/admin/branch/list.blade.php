@@ -91,7 +91,7 @@
                                             <td class="text-wrap" id="email-{{$record->id}}">{{ $record->address }}</td>
                                             <td class="font-weight-bold" id="address-{{$record->id}}">{{$record->ip_address}}</td>
                                             <td class="font-weight-bold" id="address-{{$record->id}}">{{$record->port}}</td>
-                                            <td class="text-wrap fw-semibold" id="name-{{$record->id}}"> <?php echo ($record->operator->name) ? $record->operator->name : "";?></td>
+                                            <td class="text-wrap fw-semibold" id="name-{{$record->id}}"> <?php if($record->operator->name){echo $record->operator->name;}else{echo "";}?></td>
                                             <td class="text-wrap fw-semibold" id="name-{{$record->id}}"> <?php echo ($record->isp->name) ? $record->isp->name : "";?></td>
                                             <td class="text-wrap fw-semibold" id="name-{{$record->id}}"> <?php echo ($record->agent->name) ? $record->agent->name : "";?></td>
                                             <td class="text-wrap fw-semibold" id="name-{{$record->id}}"> <?php echo ($record->customer->name) ? $record->customer->name : "";?></td>

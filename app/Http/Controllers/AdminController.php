@@ -294,10 +294,7 @@ class AdminController extends Controller {
         //     $code = 1;
         // }
         unset($data['_token']);
-        $code1 = rand(0,100);
-        $code2 = rand(0,10);
-        $code = $code1 + $code2;
-        $data['branch_code'] = $code+1;
+
         if(!empty($request->isp_members_ids)){
             $data["isp_members_ids"] = implode(",", $request->isp_members_ids);
         }
@@ -333,10 +330,7 @@ class AdminController extends Controller {
         unset($data['_method']);
         unset($data['record_id']);
 
-        $code1 = rand(0,100);
-        $code2 = rand(0,10);
-        $code = $code1 + $code2;
-        $data['branch_code'] = $code+1;
+
         if(!empty($request->isp_members_ids)){
             $data["isp_members_ids"] = implode(",", $request->isp_members_ids);
         }

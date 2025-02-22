@@ -34,7 +34,10 @@
             @csrf
             @method('PUT')
             <div class="card-body">
-
+                <div class="form-group">
+                    <label>Branch Code</label>
+                    <input type="text" name="branch_code" value="{{$nms->branch_code}} class="form-control" placeholder="Branch Code" required/>
+                </div>
                 <div class="form-group">
                     <label>Branch Name</label>
                     <input type="text" name="branch_name" value="{{$nms->branch_name}}" class="form-control" placeholder="Branch Name" required/>
@@ -160,7 +163,7 @@
                      <input type="hidden" name="customer_name" id="customer_name" value=""> -->
 
 
-                     <input type="hidden" name="branch_code"  value="">
+                    <!-- <input type="hidden" name="branch_code"  value=""> -->
                      <input type="hidden" name="record_id" value="{{ $nms->id }}"/>
 
                      <button type="submit"  class="btn btn-success" >Submit</button>

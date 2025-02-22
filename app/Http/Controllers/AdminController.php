@@ -797,7 +797,7 @@ public function customer_member_delete(Request $request, $id)
             'branch' => 'required',
         ]);
 
-        dd($request->all());
+        //dd($request->all());
 
         if($request->hindi_english){
             $data['hindi_english'] = 1;

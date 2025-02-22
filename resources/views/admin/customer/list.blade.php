@@ -56,8 +56,8 @@
                                             <td class="font-weight-bold" id="mobile-{{$record->id}}">{{ $record->mobile }}</td>
                                             <td class="font-weight-bold" id="address-{{$record->id}}">{{ $record->address}}</td>
                                            <!-- <td  class="font-weight-bold" id="branch-{{$record->id}}">{{ $record->branch_name }}</td> -->
-                                            <td> 
-                                                 <a href="javascript:void(0);" data-bs-toggle="modal" rel="{{$record->id}}" data-bs-target="#editMyModal" class="btn btn-primary-light edit-record border-0 me-3 " data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"><i class="icon icon-pencil align-middle"></i></a> 
+                                            <td>
+                                                 <a href="javascript:void(0);" data-bs-toggle="modal" rel="{{$record->id}}" data-bs-target="#editMyModal" class="btn btn-primary-light edit-record border-0 me-3 " data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"><i class="icon icon-pencil align-middle"></i></a>
 
                                                  <form method="post"  action="{{ route('admin.customer.delete',['id' => $record->id]) }}" style="display:inline">
                                                     @csrf
@@ -75,7 +75,7 @@
                         </div>
                     </div>
                 </div>
-                
+
             </div>
                             <!-- COL-END -->
                     <!-- The Modal -->
@@ -121,7 +121,7 @@
                                 </form>
                             </div>
 
-                            
+
 
                             </div>
                         </div>
@@ -171,13 +171,13 @@
                                 </form>
                             </div>
 
-                            
+
 
                             </div>
                         </div>
                     </div>
 
-                
+
 @endsection
 
 @section('scripts')
@@ -207,12 +207,12 @@ $('#basic-datatable2').dataTable({
             $("#edit_mobile").val(mobile);
             $("#edit_address").val(address);
             $("#edit_branch_name").val(branch_name);
-            
+
             $("#edit_record").val(id);
         });
     });
     </script>
-    
+
 
 		<!-- Handle Counter js -->
 		@vite('resources/assets/js/handlecounter.js')

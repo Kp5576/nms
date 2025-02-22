@@ -51,7 +51,7 @@
                       <option value="">Select Option</option>
 
                       @foreach($datas as $value)
-                          <option  value="{{$value->branch_name}}">{{$value->branch_name}} </option>
+                          <option  value="{{$value->branch_name}}">{{$value->branch_name}}({{$value->address}}) </option>
                       @endforeach
                    </select>
                 </div>

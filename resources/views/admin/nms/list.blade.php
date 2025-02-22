@@ -55,10 +55,10 @@
                                     <th>#</th>
                                     <th>Company Name</th>
                                     {{-- <th>Customer </th> --}}
-                                    <th>Customer Branch</th>
+                                    <th>Branch</th>
                                     <th>ISP</th>
                                     <th>Agent</th>
-                                    <th>Branch</th>
+                                    <th>Operator</th>
 
                                     <th>Ip Address</th>
                                     <th>Port</th>
@@ -78,7 +78,7 @@
 
                                     <td class="text-wrap">{{ $record->isp->name }}</td>
                                     <td class="text-wrap">{{ $record->agent->name }}</td>
-                                    <td class="text-wrap">{{ $record->branch }}</td>
+                                    <td class="text-wrap">{{ $record->operator->name }}</td>
 
 
                                     <td class="text-wrap">{{$record->ip_address}}</td>

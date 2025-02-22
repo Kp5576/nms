@@ -129,7 +129,7 @@
 															@foreach($recent_down_links as $record)
 														  <tr>
 															<th scope="row">{{$loop->iteration}}</th>
-															<td>{{$record->customer->branch_name}}</td>
+															<td>{{$record->branch_name}}</td>
 															<td scope="col">
 																@if($record->status == 1)
 																<span class="btn btn-success btn-xs">Online</span>

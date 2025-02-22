@@ -55,7 +55,7 @@
 													</div>
 													<h6 class="mt-4 mb-1">Total Down Links</h6>
 													<h2 class="mb-2  number-font">{{$total_down_links}}</h2>
-												
+
 												</div>
 											</div>
 										</div>
@@ -67,18 +67,18 @@
 													</div>
 													<h6 class="mt-4 mb-1">Latency</h6>
 													<h2 class="mb-2  number-font">{{ $max_latency }}</h2>
-												
+
 												</div>
 											</div>
 										</div>
-										
+
 									</div>
 								</div>
-								
+
 								<div class="col-lg-6 col-md-6 col-sm-12 col-xl-6">
 											<div class="card">
 												<div class="card-body text-center statistics-info">
-												
+
 													<h6 class="mt-4 mb-1">Recent Up links</h6>
 													{{-- <h2 class="mb-2  number-font">{{$recent_up_links}}</h2> --}}
 													<div class="table-responsive mt-2">
@@ -94,7 +94,7 @@
 																@foreach($recent_up_links as $record)
 															  <tr>
 																<th scope="row">{{$loop->iteration}}</th>
-																<td>{{$record->customer->branch_name}}</td>
+																<td>{{$record->branch_name}}</td>
 																<td scope="col">
 																	@if($record->status == 1)
 																	<span class="btn btn-success btn-xs">Online</span>
@@ -110,12 +110,12 @@
 														</div>
 												</div>
 											</div>
-									
+
 								<div class="card">
 												<div class="card-body text-center statistics-info">
-													
+
 													<h5 class="mt-4 mb-1">Recent Down Links</h5>
-											
+
 													<div class="table-responsive mt-2">
 													<table class="table">
 														<thead>
@@ -148,10 +148,10 @@
 							</div>
 							<!-- ROW-1 END -->
 
-							
 
 
-							
+
+
 
 @endsection
 

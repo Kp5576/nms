@@ -645,7 +645,7 @@ public function customer_member_delete(Request $request, $id)
 public function list_nms_dwonlinks(){
     $nms_list = NMS::with(['user', 'customer'])
     ->leftJoin('customer', 'nms.customer_id', '=', 'customer.id')
-    ->select('nms.*', 'customer.branch_name')->whereNotNull('member_id')->orWhere('status', 0)
+    ->select('nms.*', 'customer.branch_name')->whereNotNull('member_id')->Where('status', 0)
     ->paginate(10);
     // echo "<pre>";
     // print($nms_list);die;

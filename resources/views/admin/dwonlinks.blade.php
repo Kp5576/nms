@@ -50,14 +50,23 @@
                                 <td class="text-wrap">
                                     {{ $loop->iteration }}
                                     </td>
+                                    @if(is_null($record->customer_id))
+                                    <td></td>
+                                    @else
                                     <td class="text-wrap" id="member-{{$record->id}}">{{ $record->user->company}}</td>
+                                    @endif
                                     {{-- <td class="font-weight-bold">{{ $record->customer->name }}</td> --}}
                                     <td class="font-weight-bold">{{ $record->branch_name }}</td>
+                                    @if(is_null($record->operator_id))
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
 
+                                    @else
                                     <td class="text-wrap">{{ $record->isp->name }}</td>
                                     <td class="text-wrap">{{ $record->agent->name }}</td>
                                     <td class="text-wrap">{{ $record->operator->name }}</td>
-
+                                    @endif
 
                                     <td class="text-wrap">{{$record->ip_address}}</td>
                                     <td class="text-wrap">{{$record->port}}</td>

@@ -91,7 +91,7 @@
                                             <td class="text-wrap" id="email-{{$record->id}}">{{ $record->address }}</td>
                                             <td class="font-weight-bold" id="address-{{$record->id}}">{{$record->ip_address}}</td>
                                             <td class="font-weight-bold" id="address-{{$record->id}}">{{$record->port}}</td>
-                                            @if($record->operator->name == NULL)
+                                            @if(is_null($record->operator->name))
                                             <td></td>
                                             <td></td>
                                             <td></td>

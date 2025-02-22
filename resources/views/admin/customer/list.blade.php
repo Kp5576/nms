@@ -39,7 +39,7 @@
                                             <th>Email</th>
                                             <th>Mobile</th>
                                             <th>Address</th>
-                                            <th>Branch Name</th>
+                                           <!-- <th>Branch Name</th> -->
                                             <th>Action</th>
                                             <th>Member</th>
 
@@ -55,7 +55,7 @@
                                             <td class="text-wrap" id="email-{{$record->id}}">{{ $record->email }}</td>
                                             <td class="font-weight-bold" id="mobile-{{$record->id}}">{{ $record->mobile }}</td>
                                             <td class="font-weight-bold" id="address-{{$record->id}}">{{ $record->address}}</td>
-                                            <td  class="font-weight-bold" id="branch-{{$record->id}}">{{ $record->branch_name }}</td>
+                                           <!-- <td  class="font-weight-bold" id="branch-{{$record->id}}">{{ $record->branch_name }}</td> -->
                                             <td> 
                                                  <a href="javascript:void(0);" data-bs-toggle="modal" rel="{{$record->id}}" data-bs-target="#editMyModal" class="btn btn-primary-light edit-record border-0 me-3 " data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"><i class="icon icon-pencil align-middle"></i></a> 
 
@@ -109,10 +109,10 @@
                                         <label>Address</label>
                                         <textarea name="address" class="form-control" placeholder="address" required></textarea>
                                     </div>
-                                    <div class="form-group">
+                                  <!--  <div class="form-group">
                                         <label>Branch Name</label>
                                         <input type="text" name="branch_name" class="form-control" placeholder="Branch Name" required/>
-                                    </div>
+                                    </div> -->
                                     <div class="form-group">
                                         {{-- <input type="hidden" name="isp_id"  value="{{ $isp_id }}"> --}}
                                     <button type="submit" class="btn btn-success" >Submit</button>
@@ -159,10 +159,10 @@
                                         <label>Address</label>
                                         <input type="text" name="address" id="edit_address" class="form-control" required/>
                                     </div>
-                                    <div class="form-group">
+                                  <!--  <div class="form-group">
                                         <label>Branch Name</label>
                                         <input type="text" name="branch_name" id="edit_branch_name" class="form-control" placeholder="Branch Name" required/>
-                                    </div>
+                                    </div> -->
                                     <div class="form-group">
                                         <input type="hidden" id="edit_record" name="record_id"/>
                                     <button type="submit" class="btn btn-success" >Submit</button>

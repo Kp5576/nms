@@ -478,7 +478,7 @@ class AdminController extends Controller {
             'email' => 'required',
             'mobile' => 'required',
             'address' => 'required',
-            'branch_name' => 'required'
+            'branch_name' => ''
         ]);
 
         $result = Customer::create($customer_list);
@@ -493,7 +493,7 @@ class AdminController extends Controller {
             'email' => 'required',
             'mobile' => 'required',
             'address' => 'required',
-            'branch_name' => 'required'
+            'branch_name' => ''
         ]);
 
         Customer::where('id', $request->record_id)->update($customer_list);

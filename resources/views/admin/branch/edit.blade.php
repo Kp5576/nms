@@ -36,7 +36,7 @@
             <div class="card-body">
                 <div class="form-group">
                     <label>Branch Code</label>
-                    <input type="text" name="branch_code" value="{{$nms->branch_code}} class="form-control" placeholder="Branch Code" required/>
+                    <input type="text" name="branch_code" value="{{$nms->branch_code}}" class="form-control" placeholder="Branch Code" required/>
                 </div>
                 <div class="form-group">
                     <label>Branch Name</label>

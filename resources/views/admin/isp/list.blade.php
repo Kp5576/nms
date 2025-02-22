@@ -17,7 +17,7 @@
         <li class="breadcrumb-item active" aria-current="page">Manage <?php echo (request()->segment(2)=='isp') ? "ISP" : "Operator";?></li>
     </ol>
 </div>
-<!-- PAGE-HEADER END --> 
+<!-- PAGE-HEADER END -->
 
 <!-- ROW-1 OPEN -->
     <div class="row">
@@ -29,7 +29,7 @@
                 <div class="card-body">
                     <!-- Button to Open the Modal -->
                     <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#myModal">
-                       Add <?php echo (request()->segment(2)=='isp') ? "ISP" : "Operator";?> 
+                       Add <?php echo (request()->segment(2)=='isp') ? "ISP" : "Operator";?>
                     </button>
                     <div class="table-responsive mt-2">
                         <table class="table table-bordered table-vcenter text-nowrap" id="basic-datatable2">
@@ -38,10 +38,10 @@
                                     <th>#</th>
                                     <th>Name</th>
                                     <th>Email</th>
-                                    
+
                                     <th>Mobile</th>
                                     <th>Address</th>
-                                  
+
                                     <th>Action</th>
                                     <th>Member</th>
                                 </tr>
@@ -56,7 +56,7 @@
                                     <td class="text-wrap" id="email-{{$record->id}}">{{ $record->email }}</td>
                                     <td class="font-weight-bold" id="mobile-{{$record->id}}">{{ $record->mobile }}</td>
                                     <td class="font-weight-bold" id="address-{{$record->id}}">{{ $record->address }}</td>
-                                   
+
                                     <td>
                                         <a href="javascript:void(0);" data-bs-toggle="modal" rel="{{$record->id}}" data-bs-target="#editMyModal" class="btn btn-primary-light edit-record border-0 me-3 " data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"><i class="icon icon-pencil align-middle"></i></a>
 
@@ -77,7 +77,7 @@
                 </div>
             </div>
         </div>
-        
+
     </div>
                             <!-- COL-END -->
                     <!-- The Modal -->
@@ -112,7 +112,7 @@
                                         <textarea name="address" class="form-control" placeholder="address" required></textarea>
                                     </div>
                                     <div class="form-group">
-                                        <label>Name</label>
+
                                         <input type="hidden" name="operator" value="<?php echo (request()->segment(2)=='isp') ? 0 : 1;?>" class="form-control" placeholder="name" required/>
                                     </div>
                                     <div class="form-group">
@@ -122,7 +122,7 @@
                                 </form>
                             </div>
 
-                            
+
 
                             </div>
                         </div>
@@ -161,7 +161,7 @@
                                         <textarea name="address" id="edit_address" class="form-control" required></textarea>
                                     </div>
                                     <div class="form-group">
-                                        <label>Name</label>
+
                                         <input type="hidden" name="operator" value="<?php echo (request()->segment(2)=='isp') ? 0 : 1;?>" class="form-control" placeholder="name" required/>
                                     </div>
                                     <div class="form-group">
@@ -172,7 +172,7 @@
                                 </form>
                             </div>
 
-                            
+
 
                             </div>
                         </div>

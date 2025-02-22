@@ -91,11 +91,17 @@
                                             <td class="text-wrap" id="email-{{$record->id}}">{{ $record->address }}</td>
                                             <td class="font-weight-bold" id="address-{{$record->id}}">{{$record->ip_address}}</td>
                                             <td class="font-weight-bold" id="address-{{$record->id}}">{{$record->port}}</td>
-                                            <td class="text-wrap fw-semibold" id="name-{{$record->id}}"> <?php if(is_null($record->operator->name)){echo "";}else{echo $record->operator->name;}?></td>
-                                            <td class="text-wrap fw-semibold" id="name-{{$record->id}}"> <?php echo ($record->isp->name) ? $record->isp->name : "";?></td>
-                                            <td class="text-wrap fw-semibold" id="name-{{$record->id}}"> <?php echo ($record->agent->name) ? $record->agent->name : "";?></td>
-                                            <td class="text-wrap fw-semibold" id="name-{{$record->id}}"> <?php echo ($record->customer->name) ? $record->customer->name : "";?></td>
-
+                                            @if($record->operator->name)
+                                            <td class="text-wrap fw-semibold" id="name-{{$record->id}}">{{$record->operator->name}}</td>
+                                            <td class="text-wrap fw-semibold" id="name-{{$record->id}}">{{$record->isp->name}}</td>
+                                            <td class="text-wrap fw-semibold" id="name-{{$record->id}}">{{$record->agent->name}}</td>
+                                            <td class="text-wrap fw-semibold" id="name-{{$record->id}}">{{$record->customer->name}}</td>
+                                            @else
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            @endif
 
                                             <td>
                                                 <a href="{{ route('admin.branch.edit',['id' => $record->id]) }}" class="btn btn-primary-light edit-record border-0 me-1 " data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"><i class="icon icon-pencil align-middle"></i></a>

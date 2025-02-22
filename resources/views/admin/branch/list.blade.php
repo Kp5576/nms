@@ -91,16 +91,17 @@
                                             <td class="text-wrap" id="email-{{$record->id}}">{{ $record->address }}</td>
                                             <td class="font-weight-bold" id="address-{{$record->id}}">{{$record->ip_address}}</td>
                                             <td class="font-weight-bold" id="address-{{$record->id}}">{{$record->port}}</td>
-                                            @if($record->operator->name)
+                                            @if($record->operator->name == NULL)
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            @else
                                             <td class="text-wrap fw-semibold" id="name-{{$record->id}}">{{$record->operator->name}}</td>
                                             <td class="text-wrap fw-semibold" id="name-{{$record->id}}">{{$record->isp->name}}</td>
                                             <td class="text-wrap fw-semibold" id="name-{{$record->id}}">{{$record->agent->name}}</td>
                                             <td class="text-wrap fw-semibold" id="name-{{$record->id}}">{{$record->customer->name}}</td>
-                                            @else
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
+
                                             @endif
 
                                             <td>

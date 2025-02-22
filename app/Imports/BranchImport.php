@@ -2,7 +2,7 @@
 
 namespace App\Imports;
 
-use App\Models\Branch;
+use App\Models\NMS;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 
@@ -17,18 +17,15 @@ class BranchImport implements ToModel, WithHeadingRow
     */
     public function model(array $row)
     {
-        return new Branch([
+        return new NMS([
             //
             'branch_code' => $row['branch_code'],
             'branch_name' => $row['branch_name'],
             'address' => $row['address'],
             'port' => $row['port'],
-            'ip' => $row['ip'],
+            'ip_address' => $row['ip_address'],
 
-            'isp_name' => $row['isp_name'],
-            'operator_name' => $row['operator_name'],
-            'agent_name' => $row['agent_name'],
-            'customer_name' => $row['customer_name']
+
         ]);
     }
 }

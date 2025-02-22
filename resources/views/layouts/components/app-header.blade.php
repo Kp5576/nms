@@ -6,13 +6,14 @@
 							<!-- sidebar-toggle-->
 							<a class="logo-horizontal " href="{{url('index')}}">
 								<img src="{{asset('build/assets/images/brand/logo.png')}}" class="header-brand-img desktop-logo" alt="logo">
-								<img src="{{asset('build/assets/images/brand/logo-3.png')}}" class="header-brand-img light-logo1"
-									alt="logo">
+								<!--<img src="{{asset('build/assets/images/brand/logo-3.png')}}" class="header-brand-img light-logo1"
+									alt="logo"> -->
+                                    <p class="header-brand-img light-logo1" style="font-size:30px;font-weight:bold;">NMS</p>
 							</a>
 							<!-- LOGO -->
-							
+
 							<div class="d-flex order-lg-2 ms-auto header-right-icons">
-								
+
 								<!-- SEARCH -->
 								<button class="navbar-toggler navresponsive-toggler d-lg-none ms-auto" type="button"
 									data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent-4"
@@ -23,8 +24,8 @@
 								<div class="navbar navbar-collapse responsive-navbar p-0">
 									<div class="collapse navbar-collapse navbarSupportedContent-4" id="navbarSupportedContent-4">
 										<div class="d-flex order-lg-2">
-											
-										
+
+
 											<!-- COUNTRY -->
 											<div class="d-flex">
 												<a class="nav-link icon theme-layout nav-link-bg layout-setting">
@@ -33,8 +34,8 @@
 												</a>
 											</div>
 											<!-- Theme-Layout -->
-											
-										
+
+
 											<!-- NOTIFICATIONS
 											<div class="dropdown  d-flex message">
 												<a class="nav-link icon text-center" data-bs-toggle="dropdown">
@@ -129,12 +130,13 @@
 													</div>
 												</div>
 											</div> -->
-											
+
 											<!-- SIDE-MENU -->
 											<div class="dropdown d-flex profile-1">
 												<a href="javascript:void(0);" data-bs-toggle="dropdown" class="nav-link leading-none d-flex">
-													<img src="{{asset('build/assets/images/users/11.jpg')}}" alt="profile-user"
-														class="avatar  profile-user brround cover-image">
+													<!--<img src="{{asset('build/assets/images/users/11.jpg')}}" alt="profile-user"
+														class="avatar  profile-user brround cover-image"> -->
+                                                        <i class="side-menu__icon fe fe-user" class="avatar  profile-user brround cover-image"></i>
 												</a>
 												<div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
 													<div class="drop-heading">

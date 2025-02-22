@@ -268,6 +268,8 @@ class AdminController extends Controller {
      // ----------------------------------branch Starting----------------------------------------
      public function list_branch(Request $request) {
 
+
+
         $agent_list = NMS::paginate(10);
 
         return view('admin.branch.list',['agent_list'=>$agent_list]);
@@ -639,6 +641,16 @@ public function customer_member_delete(Request $request, $id)
     }
 
 // ----------------------------starting-of--NMS--------------------------
+
+public function list_nms_dwonlinks(){
+    $nms_list = NMS::with(['user', 'customer'])
+    ->leftJoin('customer', 'nms.customer_id', '=', 'customer.id')
+    ->select('nms.*', 'customer.branch_name')->whereNotNull('member_id')->where('status', 0)
+    ->paginate(10);
+    // echo "<pre>";
+    // print($nms_list);die;
+    return view('admin.dwonlinks',['nms_list'=>$nms_list ]);
+}
     public function list_nms(){
         $nms_list = NMS::with(['user', 'customer'])
         ->leftJoin('customer', 'nms.customer_id', '=', 'customer.id')

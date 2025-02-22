@@ -109,6 +109,7 @@ Route::prefix('admin')->middleware('auth','admin')->group(function () {
     Route::put('/member/edit', [AdminController::class, 'member_update'])->name('admin.member.update');
     Route::delete('/member/{id}', [AdminController::class, 'member_delete'])->name('admin.member.delete');
 
+    Route::get('/nms-dwonlinks', [AdminController::class, 'list_nms_dwonlinks'])->name('admin.nms.dwonlinks_list');
     Route::get('/nms', [AdminController::class, 'list_nms'])->name('admin.nms.list');
     Route::get('/nms/add', [AdminController::class, 'nms_add'])->name('admin.nms.add');
     Route::get('/nms/view/{id}', [AdminController::class, 'nms_view'])->name('admin.nms.view');
@@ -121,6 +122,8 @@ Route::prefix('admin')->middleware('auth','admin')->group(function () {
     Route::put('/nms', [AdminController::class, 'nms_update'])->name('admin.nms.update');
     Route::delete('/nms/{id}', [AdminController::class, 'nms_delete'])->name('admin.nms.delete');
     Route::get('/nms/logs/{id}', [AdminController::class, 'nms_logs'])->name('admin.nms.logs');
+
+
 
 
     Route::get('/ajax_user/isp/{id}', [AdminController::class, 'ajaxUser_isp'])->name("admin.nms.ajax_isp");

@@ -160,10 +160,20 @@
                      </div>
                   </div>
                </div>
+               <div class="form-group">
+                <div class=" row mb-2">
+                   <label class="col-md-3 form-label" for="">Operator Alert</label>
+                   <div class="col-md-6">
+                      <div class="form-check form-switch">
+                          <input class="form-check-input" name="operator_alert" {{ $nms->operator_alert == 1 ? 'checked' : ''  }} type="checkbox" disabled>
+                      </div>
+                   </div>
+                </div>
+             </div>
                <div class="mb-0 mt-4 row justify-content-end">
                   <div class="col-md-3">
                      <input type="hidden" name="record_id" value="{{ $nms->id }}"/>
-                     <a href="{{ route('admin.nms.list') }}" 
+                     <a href="{{ route('admin.nms.list') }}"
                         style="color: white; background-color: green; padding: 10px 20px; text-decoration: none; border-radius: 5px; display: inline-block;"> Back</a>
 
                   </div>

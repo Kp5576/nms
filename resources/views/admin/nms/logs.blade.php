@@ -17,7 +17,7 @@ use App\Http\Controllers\AdminController;
 </style>
 <!-- PAGE-HEADER -->
 <div class="page-header">
-   <h1 class="page-title">Branch Name: {{ $customer->branch_name}}</h1>
+   <h1 class="page-title">Branch Name: {{ $nms->branch_name}}</h1>
    <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="">Home</a></li>
       <li class="breadcrumb-item active" aria-current="page">Manage Logs</li>
@@ -99,7 +99,7 @@ use App\Http\Controllers\AdminController;
 <div class="row">
    <div class="col-xl-12 col-md-12">
       <div class="card cart p-4">
-       
+
             <h2 >Logs Last 12 Hours:</h1>
             <form action="" method="get">
               @csrf
@@ -118,8 +118,8 @@ use App\Http\Controllers\AdminController;
             <div class="col-md-12">
                <canvas id="myChart" style="width:100%;"></canvas>
             </div>
-      
-        
+
+
       </div>
    </div>
 </div>
@@ -139,7 +139,7 @@ use App\Http\Controllers\AdminController;
               </thead>
                 @foreach($last_five_records as $record)
                <tr>
-                 <td>@if($record->status == 1) 
+                 <td>@if($record->status == 1)
                    <span class="btn btn-sm btn-success">Active</span>
                    @else
                    <span class="btn btn-sm btn-danger">Inactive</span>
@@ -192,7 +192,7 @@ use App\Http\Controllers\AdminController;
             var xValues = <?php echo $xValues; ?>;
             var yValues = <?php echo $yValues; ?>;
             var barColors =  <?php echo $barColors; ?>;
-            
+
             new Chart("myChart", {
               type: "bar",
               data: {

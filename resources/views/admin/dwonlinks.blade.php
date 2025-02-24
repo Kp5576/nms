@@ -10,10 +10,10 @@
 
                             <!-- PAGE-HEADER -->
 <div class="page-header">
-    <h1 class="page-title">Manage NMS DwonLinks List</h1>
+    <h1 class="page-title">Manage NMS DownLinks List</h1>
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="{{ route('admin') }}">Home</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Manage NMS DwonLinks</li>
+        <li class="breadcrumb-item active" aria-current="page">Manage NMS DownLinks</li>
     </ol>
 </div>
 <!-- PAGE-HEADER END -->

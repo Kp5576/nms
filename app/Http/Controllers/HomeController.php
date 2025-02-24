@@ -264,6 +264,7 @@ class HomeController extends Controller
 
         $operator_mobiles_array = [];
         $operator_mobiles_array[] = $operator->mobile;
+        $operator_mobiles = implode(',',$operator_mobiles_array);
         //$customer_members_emails_array[] = $operator->email;
 
         $customer_members_mobiles = implode(',',$customer_members_mobiles_array);
@@ -315,7 +316,7 @@ class HomeController extends Controller
 
                 $name = $agent->name;
                 $phone = $agent->mobile;
-                $mobile = $operator_mobiles_array;
+                $mobile = $operator_mobiles;
 
                 $emails = $isp_members_emails;
             }
@@ -413,7 +414,7 @@ class HomeController extends Controller
 
                 $name = $agent->name;
                 $phone = $agent->mobile;
-                $mobile = $operator_mobiles_array;
+                $mobile = $operator_mobiles;
 
                 $emails = $isp_members_emails;
             }

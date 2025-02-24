@@ -308,8 +308,8 @@ class HomeController extends Controller
                 // parameter ISP msg
                 $customer_name = $operator->name;
 
-                $name = $operator->name;
-                $phone = $operator->mobile;
+                $name = $agent->name;
+                $phone = $agent->mobile;
                 $mobile = $isp_members_mobiles;
 
                 $emails = $isp_members_emails;
@@ -406,8 +406,8 @@ class HomeController extends Controller
                 // parameter ISP msg
                 $customer_name = $operator->name;
 
-                $name = $operator->name;
-                $phone = $operator->mobile;
+                $name = $agent->name;
+                $phone = $agent->mobile;
                 $mobile = $isp_members_mobiles;
 
                 $emails = $isp_members_emails;

@@ -239,6 +239,7 @@ class HomeController extends Controller
 
         $member = User::where("id", $row->member_id)->first();
         $isp = ISP::where("id", $row->isp_id)->first();
+        $opeartor = ISP::where("id", $row->operator_id)->first();
         $customer = Customer::where("id", $row->customer_id)->first();
         $agent = Agent::where("id", $row->agent_id)->first();
 
@@ -302,6 +303,17 @@ class HomeController extends Controller
 
                 $emails = $isp_members_emails;
             }
+            elseif ($type == "operator")
+            {
+                // parameter ISP msg
+                $customer_name = $operator->name;
+
+                $name = $operator->name;
+                $phone = $operator->mobile;
+               // $mobile = $isp_members_mobiles;
+
+               // $emails = $isp_members_emails;
+            }
             elseif ($type == "isp_member")
             {
 
@@ -355,7 +367,7 @@ class HomeController extends Controller
                 }
                 if($row->mail_alert == 1)
                 {
-                 //   $this->sendMail($member, $template_name, $emails, $member->company, $postdata);
+                    $this->sendMail($member, $template_name, $emails, $member->company, $postdata);
                 }
             }
         }
@@ -388,6 +400,17 @@ class HomeController extends Controller
                 $mobile = $isp_members_mobiles;
 
                 $emails = $isp_members_emails;
+            }
+            elseif ($type == "operator")
+            {
+                // parameter ISP msg
+                $customer_name = $operator->name;
+
+                $name = $operator->name;
+                $phone = $operator->mobile;
+               // $mobile = $isp_members_mobiles;
+
+               // $emails = $isp_members_emails;
             }
             elseif ($type == "isp_member")
             {
@@ -443,7 +466,7 @@ class HomeController extends Controller
                 }
                 if($row->mail_alert == 1)
                 {
-                 //   $this->sendMail($member, $template_name, $emails, $member->company, $postdata);
+                    $this->sendMail($member, $template_name, $emails, $member->company, $postdata);
                 }
             }
         }

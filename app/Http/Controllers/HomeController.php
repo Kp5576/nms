@@ -239,7 +239,7 @@ class HomeController extends Controller
 
         $member = User::where("id", $row->member_id)->first();
         $isp = ISP::where("id", $row->isp_id)->first();
-        $opeartor = ISP::where("id", $row->operator_id)->first();
+        $operator = ISP::where("id", $row->operator_id)->first();
         $customer = Customer::where("id", $row->customer_id)->first();
         $agent = Agent::where("id", $row->agent_id)->first();
 
@@ -339,7 +339,7 @@ class HomeController extends Controller
 
             $time = date("d M Y h:i a");
 
-            $postdata = [$customer_name, $row->ip_address, $customer->branch_name, $customer->address, $time, $name, $phone ];
+            $postdata = [$customer_name, $row->ip_address, $row->branch_name, $row->address, $time, $name, $phone ];
 
             if (!empty($mobile))
             {
@@ -437,7 +437,7 @@ class HomeController extends Controller
 
             $time = date("d M Y h:i a");
 
-            $postdata = [$customer_name, $row->ip_address, $customer->branch_name, $customer->address, $time, $name, $phone ];
+            $postdata = [$customer_name, $row->ip_address, $row->branch_name, $row->address, $time, $name, $phone ];
 
             if (!empty($mobile))
             {

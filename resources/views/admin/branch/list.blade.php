@@ -115,7 +115,7 @@
                                                 </form>
                                             </td>
                                         </tr>
-                                        </tr>
+
                                         @endforeach
                                     </tbody>
                                 </table>

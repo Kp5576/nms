@@ -138,7 +138,7 @@ class HomeController extends Controller
                     }
                     if ($row->operator_alert == 1)
                     {
-                        $this->sendCommonMsg("isp", $status, $row, "hindi");
+                        $this->sendCommonMsg("operator", $status, $row, "hindi");
                     }
                 }
                 else

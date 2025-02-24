@@ -310,9 +310,9 @@ class HomeController extends Controller
 
                 $name = $operator->name;
                 $phone = $operator->mobile;
-               // $mobile = $isp_members_mobiles;
+                $mobile = $isp_members_mobiles;
 
-               // $emails = $isp_members_emails;
+                $emails = $isp_members_emails;
             }
             elseif ($type == "isp_member")
             {
@@ -408,9 +408,9 @@ class HomeController extends Controller
 
                 $name = $operator->name;
                 $phone = $operator->mobile;
-               // $mobile = $isp_members_mobiles;
+                $mobile = $isp_members_mobiles;
 
-               // $emails = $isp_members_emails;
+                $emails = $isp_members_emails;
             }
             elseif ($type == "isp_member")
             {

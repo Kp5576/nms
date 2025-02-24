@@ -240,6 +240,7 @@ class HomeController extends Controller
         $member = User::where("id", $row->member_id)->first();
         $isp = ISP::where("id", $row->isp_id)->first();
         $operator = ISP::where("id", $row->operator_id)->first();
+
         $customer = Customer::where("id", $row->customer_id)->first();
         $agent = Agent::where("id", $row->agent_id)->first();
 
@@ -260,6 +261,10 @@ class HomeController extends Controller
 
         $customer_members_mobiles_array[] = $customer->mobile;
         $customer_members_emails_array[] = $customer->email;
+
+        $operator_mobiles_array = [];
+        $operator_mobiles_array[] = $operator->mobile;
+        //$customer_members_emails_array[] = $operator->email;
 
         $customer_members_mobiles = implode(',',$customer_members_mobiles_array);
         $customer_members_emails = implode(',',$customer_members_emails_array);
@@ -310,9 +315,9 @@ class HomeController extends Controller
 
                 $name = $agent->name;
                 $phone = $agent->mobile;
-                $mobile = $operator->mobile;
+                $mobile = $operator_mobiles_array;
 
-                $emails = $operator->email;
+                $emails = $isp_members_emails;
             }
             elseif ($type == "isp_member")
             {
@@ -408,9 +413,9 @@ class HomeController extends Controller
 
                 $name = $agent->name;
                 $phone = $agent->mobile;
-                $mobile = $operator->mobile;
+                $mobile = $operator_mobiles_array;
 
-                $emails = $operator->email;
+                $emails = $isp_members_emails;
             }
             elseif ($type == "isp_member")
             {

@@ -44,6 +44,11 @@ class CustomerController extends Controller {
         ]);
     }
 
+    public function list_nms_downlinks(){
+        $nms_list = NMS::where('member_id', auth()->user()->id)->where('status', 0)->paginate(10);
+        return view('customer.downlinks',['nms_list'=>$nms_list]);
+    }
+
     public function list_nms(){
         $nms_list = NMS::where('member_id', auth()->user()->id)->paginate(10);
         return view('customer.nms.list',['nms_list'=>$nms_list]);

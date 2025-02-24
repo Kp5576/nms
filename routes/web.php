@@ -148,6 +148,8 @@ Route::put('/system_setting', [AdminController::class, 'setting_add'])->name('ad
 Route::prefix('customer')->middleware('auth','customer')->group(function () {
     Route::get('/', [CustomerController::class, 'index'])->name('customer');
 
+    Route::get('/nms/downlinks', [CustomerController::class, 'list_nms_downlinks'])->name('customer.downlinks');
+
     Route::get('/nms', [CustomerController::class, 'list_nms'])->name('customer.nms.list');
     Route::get('/nms/view/{id}', [CustomerController::class, 'nms_view'])->name('customer.nms.view');
     Route::get('/nms/logs/{id}', [CustomerController::class, 'nms_logs'])->name('customer.nms.logs');

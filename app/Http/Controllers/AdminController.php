@@ -654,7 +654,7 @@ public function list_nms_dwonlinks(){
     public function list_nms(){
         $nms_list = NMS::with(['user', 'customer'])
         ->leftJoin('customer', 'nms.customer_id', '=', 'customer.id')
-        ->select('nms.*', 'customer.branch_name')->whereNotNull('member_id')
+        ->select('nms.*')->whereNotNull('member_id')
         ->paginate(10);
         // echo "<pre>";
         // print($nms_list);die;

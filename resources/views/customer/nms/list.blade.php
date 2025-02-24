@@ -22,12 +22,12 @@
     <div class="row">
         <div class="col-xl-12 col-md-12">
             <div class="card cart">
-               
+
                 <div class="card-body">
                     <!-- Button to Open the Modal -->
                     <a href="{{route('customer.nms.add')}}" class="btn btn-success">
                         Add NMS
-                    </a> 
+                    </a>
                     <div class="table-responsive mt-2">
                         <table id="example2" class="table table-bordered table-vcenter text-nowrap">
                             <thead>
@@ -49,9 +49,9 @@
                                     {{ $loop->iteration }}
                                     </td>
                                     <td class="text-wrap" id="member-{{$record->id}}">{{ $record->user->company}}</td>
-                                    <td class="font-weight-bold">{{ $record->customer->branch_name }}</td> 
-                                    <td class="text-wrap">{{ $record->isp->name }}</td> 
-                                  
+                                    <td class="font-weight-bold">{{ $record->branch_name }}</td>
+                                    <td class="text-wrap">{{ $record->isp->name }}</td>
+
                                     <td class="text-wrap">{{$record->ip_address}}</td>
                                     <td class="text-wrap">{{$record->port}}</td>
                                     <td class="text-wrap">
@@ -65,7 +65,7 @@
                                         <a href="{{ route('customer.nms.view',['id' => $record->id]) }}" class="btn btn-info edit-record border-0 me-3 " data-bs-toggle="tooltip" data-bs-placement="top" title="Edit">view</a>
                                     </td>
                                 </tr>
-                                 @endforeach 
+                                 @endforeach
                             </tbody>
                         </table>
                         {!! $nms_list->links('pagination::bootstrap-5') !!}
@@ -74,7 +74,7 @@
                 </div>
             </div>
         </div>
-        
+
     </div>
 
 @endsection

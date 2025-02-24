@@ -60,7 +60,7 @@
                   <div class=" row mb-2">
                      <label class="col-md-3 form-label" for="">CUSTOMER</label>
                      <div class="col-md-6">
-                       
+
                         <input type="text" readonly  value="{{ $nms->customer->name }}" class="form-control" disabled />
                      </div>
                   </div>
@@ -100,7 +100,7 @@
                     </div>
                   </div>
                </div>
-              
+
                <hr/>
                <div class="form-group">
                   <div class=" row mb-2">
@@ -165,7 +165,7 @@
                <div class="mb-0 mt-4 row justify-content-end">
                   <div class="col-md-3">
                      <input type="hidden" name="record_id" value="{{ $nms->id }}"/>
-                     <a href="{{ route('admin.nms.list') }}" 
+                     <a href="{{ route('customer.nms.list') }}"
                         style="color: white; background-color: green; padding: 10px 20px; text-decoration: none; border-radius: 5px; display: inline-block;"> Back</a>
 
                   </div>

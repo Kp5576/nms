@@ -143,6 +143,7 @@
 														  @endforeach
 														</tbody>
 													  </table>
+                                                      {!! $recent_down_links->links('pagination::bootstrap-5') !!}
 													</div>
 												</div>
 											</div>

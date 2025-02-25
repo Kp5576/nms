@@ -265,7 +265,9 @@ class HomeController extends Controller
         $operator_mobiles_array = [];
         $operator_mobiles_array[] = $operator->mobile;
         $operator_mobiles = implode(',',$operator_mobiles_array);
-        //$customer_members_emails_array[] = $operator->email;
+        $operator_email_array = [];
+        $operator_email_array[] = $operator->email;
+        $operator_email = implode(',',$operator_email_array);
 
         $customer_members_mobiles = implode(',',$customer_members_mobiles_array);
         $customer_members_emails = implode(',',$customer_members_emails_array);
@@ -318,7 +320,7 @@ class HomeController extends Controller
                 $phone = $agent->mobile;
                 $mobile = $operator_mobiles;
 
-                $emails = $isp_members_emails;
+                $emails = $operator_email;
             }
             elseif ($type == "isp_member")
             {
@@ -416,7 +418,7 @@ class HomeController extends Controller
                 $phone = $agent->mobile;
                 $mobile = $operator_mobiles;
 
-                $emails = $isp_members_emails;
+                $emails = $operator_email;
             }
             elseif ($type == "isp_member")
             {

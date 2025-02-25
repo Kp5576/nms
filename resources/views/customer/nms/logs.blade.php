@@ -33,7 +33,7 @@ use App\Http\Controllers\AdminController;
                                         <div class="card-body">
                                             <div class="d-flex">
                                                 <div class="text-white">
-                                                    <h2 class="mb-0 number-font">{{$nms['ip_address']}}</h2>
+                                                    <h2 class="mb-0 number-font">{{$record['ip_address']}}</h2>
                                                     <p class="text-white mb-0">IP Address</p>
                                                 </div>
                                                 <div class="ms-auto"> <i class="fa fa-check text-white fs-30 me-2 mt-2"></i> </div>
@@ -72,8 +72,8 @@ use App\Http\Controllers\AdminController;
                                         <div class="card-body">
                                             <div class="d-flex">
                                                 <div class="text-white">
-                                                    <h2 class="mb-0 number-font">{{ isset($last_five_records[0]) && $last_five_records{0}->status ? $nms->main_ok_datetime : $nms->last_ok_datetime}}</h2>
-                                                    <p class="text-white mb-0">{{ isset($last_five_records[0]) && $last_five_records{0}->status ? 'Currently up for' : 'Currently down for'}}</p>
+                                                    <h2 class="mb-0 number-font">{{ $last_five_records{0}->status ? $nms->main_ok_datetime : $nms->last_ok_datetime}}</h2>
+                                                    <p class="text-white mb-0">{{ $last_five_records{0}->status ? 'Currently up for' : 'Currently down for'}}</p>
                                                 </div>
                                                 <div class="ms-auto"> <i class="fa fa-check text-white fs-30 me-2 mt-2"></i> </div>
                                             </div>
@@ -105,10 +105,10 @@ use App\Http\Controllers\AdminController;
               @csrf
              <div class="row">
                <div class="col-md-3">
-               <input class="form-control" name="start_date" value="{{ $data['start_date'] }}" placeholder="MM/DD/YYYY" type="date">
+               <input class="form-control" name="start_date" value="{{ $start_date }}" placeholder="MM/DD/YYYY" type="date">
               </div>
               <div class="col-md-3">
-               <input class="form-control" name="end_date" value="{{ $data['end_date'] }}" placeholder="MM/DD/YYYY" type="date">
+               <input class="form-control" name="end_date" value="{{ $end_date }}" placeholder="MM/DD/YYYY" type="date">
               </div>
               <div class="col-md-3">
                 <input type="submit" name="submit" value="Submit" class="btn btn-success"/>
@@ -137,7 +137,7 @@ use App\Http\Controllers\AdminController;
            <th>Date</th>
               </tr>
               </thead>
-                @foreach($data['last_five_records'] as $record)
+                @foreach($last_five_records as $record)
                <tr>
                  <td>@if($record->status == 1)
                    <span class="btn btn-sm btn-success">Active</span>
@@ -161,15 +161,14 @@ use App\Http\Controllers\AdminController;
      <h2>Incidents </h2>
      <table class="table table-bordered">
        <thead>
-
-             <tr>
+         <tr>
            <th>Date</th>
            <th>Started</th>
            <th>Ended</th>
            <th>Length</th>
               </tr>
               </thead>
-                @foreach($data['incident_records'] as $record)
+                @foreach($incident_records as $record)
                <tr>
                   <td>
                  {{ date("d M Y", strtotime($record["created_at"])) }}
@@ -190,9 +189,9 @@ use App\Http\Controllers\AdminController;
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
          <script>
-            var xValues = <?php echo $data['xValues']; ?>;
-            var yValues = <?php echo $data['yValues']; ?>;
-            var barColors =  <?php echo $data['barColors']; ?>;
+            var xValues = <?php echo $xValues; ?>;
+            var yValues = <?php echo $yValues; ?>;
+            var barColors =  <?php echo $barColors; ?>;
 
             new Chart("myChart", {
               type: "bar",

@@ -33,7 +33,7 @@ class CustomerController extends Controller {
         $total_nms = NMS::where('member_id',auth()->user()->id)->count();
         $total_up_links = NMS::where('status', 1)->where('member_id',auth()->user()->id)->count();
         $total_down_links = NMS::where('status', 0)->where('member_id',auth()->user()->id)->count();
-        $recent_down_links = NMS::where('status', 0)->where('member_id',auth()->user()->id)->orderBy('updated_at', 'desc')->take(5)->get();
+        $recent_down_links = NMS::where('status', 0)->where('member_id',auth()->user()->id)->orderBy('updated_at', 'desc')->paginate(2);
         $recent_up_links = NMS::where('status', 1)->where('member_id',auth()->user()->id)->orderBy('updated_at', 'desc')->paginate(2);
         return view('customer.home.index',
         ['total_nms'=>$total_nms,

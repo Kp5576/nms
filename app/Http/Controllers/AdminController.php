@@ -48,7 +48,7 @@ class AdminController extends Controller {
         $total_nms = NMS::count();
         $total_up_links = NMS::where('status', 1)->count();
         $total_down_links = NMS::where('status', 0)->count();
-        $recent_down_links = NMS::where('status', 0)->orderBy('updated_at', 'desc')->take(5)->get();
+        $recent_down_links = NMS::where('status', 0)->orderBy('updated_at', 'desc')->paginate(2);
         $recent_up_links = NMS::where('status', 1) ->orderBy('updated_at', 'desc')->paginate(2);
         $max_latency = ServerTime::max('latency');
         return view('admin.home.index',

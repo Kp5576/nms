@@ -96,6 +96,7 @@ class CustomerController extends Controller {
 
         $nms->last_check_datetime = $this->get_elapsed_time($nms->last_check_datetime);
         $nms->main_ok_datetime = $this->get_elapsed_time($nms->main_ok_datetime);
+        $nms->last_ok_datetime = $this->get_elapsed_time($nms->last_ok_datetime);
         $data['nms'] = $nms;
 
         $data['last_five_records'] = ServerTime::where('nms_id',$id)->orderBy('id', 'desc')->take(5)->get();

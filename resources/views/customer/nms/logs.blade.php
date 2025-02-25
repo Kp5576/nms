@@ -72,7 +72,7 @@ use App\Http\Controllers\AdminController;
                                         <div class="card-body">
                                             <div class="d-flex">
                                                 <div class="text-white">
-                                                    <h2 class="mb-0 number-font">{{ $last_five_records{0}->status ? $nms->main_ok_datetime : $nms->last_ok_datetime}}</h2>
+                                                    <h2 class="mb-0 number-font">{{ isset($last_five_records[0]) && $last_five_records{0}->status ? $nms->main_ok_datetime : $nms->last_ok_datetime}}</h2>
                                                     <p class="text-white mb-0">{{ isset($last_five_records[0]) && $last_five_records{0}->status ? 'Currently up for' : 'Currently down for'}}</p>
                                                 </div>
                                                 <div class="ms-auto"> <i class="fa fa-check text-white fs-30 me-2 mt-2"></i> </div>
